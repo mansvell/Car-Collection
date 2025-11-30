@@ -9,11 +9,13 @@ import { AdminDashboard} from './pages/admin/admin-dashboard/admin-dashboard';
 import {Suggest} from './pages/suggest/suggest';
 import {Favorites} from './pages/favorites/favorites';
 import {AdminLogin} from './pages/admin/admin-login/admin-login';
+import {Register} from './pages/register/register';
 
 export const routes: Routes = [
   { path:'' , component:Home},
   { path: 'brand/:id', component: Brand },
   { path: 'userlogin', component: UserLogin },
+  { path: 'register', component: Register },
   {path: 'suggest', component: Suggest},
   { path: 'favorites', component: Favorites },
   { path: 'admin/login', component: AdminLogin },
