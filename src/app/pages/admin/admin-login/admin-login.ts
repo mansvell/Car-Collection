@@ -1,15 +1,15 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-admin-login',
   imports: [],
   template: `
     <p>
-      login works!
+      admin-login works!
     </p>
   `,
   styles: ``,
 })
-export class Login {
+export class AdminLogin {
 
 }
