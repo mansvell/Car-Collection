@@ -25,6 +25,7 @@ export const routes: Routes = [
       { path: '', component: AdminDashboard },
       { path: 'cars', component: AdminCarsList },
       { path: 'cars/new', component: AdminCarForm },
+      { path: 'cars/suggestadmin', component: Admin },
       { path: 'cars/:id/edit', component: AdminCarForm },
     ]
   },

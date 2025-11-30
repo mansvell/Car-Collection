@@ -20,7 +20,7 @@ import {NgForOf} from '@angular/common';
       </p>
 
       <form (ngSubmit)="submit()" class="space-y-6 bg-slate-900/40 p-6 rounded-xl border border-slate-700/50">
-        <!-- Upload image -->
+
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Photo</label>
 
@@ -29,28 +29,24 @@ import {NgForOf} from '@angular/common';
                  class="w-full text-sm bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
         </div>
 
-        <!-- Model -->
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Nom du modèle</label>
           <input [(ngModel)]="form.modelName" name="modelName" required
-                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
+                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 text-slate-300"/>
         </div>
 
-        <!-- Brand -->
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Marque</label>
           <input [(ngModel)]="form.brandName" name="brandName" required
-                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
+                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 text-slate-300"/>
         </div>
 
-        <!-- Year -->
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Année</label>
           <input type="number" [(ngModel)]="form.year" name="year" required
-                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
+                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 text-slate-300"/>
         </div>
 
-        <!-- Category -->
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Catégorie</label>
 
@@ -61,28 +57,24 @@ import {NgForOf} from '@angular/common';
           </select>
         </div>
 
-        <!-- Description -->
+        <div>
+          <label class="text-slate-200 mb-1 block">Chevaux (HP)</label>
+          <input type="number"
+                 class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
+        </div>
+
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Courte description</label>
           <textarea [(ngModel)]="form.description" name="description" rows="3"
                     class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"></textarea>
         </div>
 
-        <!-- Optional name -->
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Votre nom (optionnel)</label>
           <input [(ngModel)]="form.userName" name="userName"
                  class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
         </div>
 
-        <!-- Optional email -->
-        <div>
-          <label class="block text-slate-200 mb-2 font-medium">Email (optionnel)</label>
-          <input type="email" [(ngModel)]="form.userEmail" name="userEmail"
-                 class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
-        </div>
-
-        <!-- Submit -->
         <button type="submit" class="w-full py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-black font-semibold tracking-wide transition duration-150">
           Envoyer la suggestion
         </button>
