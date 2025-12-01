@@ -1,36 +1,34 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-admin-cars-list',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, RouterLink],
   template: `
 
     <section class="pt-28 pb-20 px-6 max-w-7xl mx-auto">
 
-      <!-- Title -->
       <div class="flex items-center justify-between mb-10 animate-fadeIn">
-        <h1 class="text-3xl font-bold text-white">Liste des Voitures</h1>
+        <h1 class="text-3xl font-bold text-white">Autolist</h1>
 
-        <button class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl
+        <button routerLink="/admin/cars/new" class="px-4 py-2 bg-cyan-500 hover:bg-cyan-400 rounded-xl
                        text-black font-semibold shadow transition">
-          ➕ Nouvelle Voiture
+          ➕ Neues Auto
         </button>
       </div>
 
-      <!-- Cars Grid -->
+
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
 
         <div *ngFor="let car of cars"
              class="bg-slate-800/60 border border-slate-700/40 rounded-xl p-4 shadow-lg
                     hover:scale-[1.03] transition animate-fadeUp">
 
-          <!-- Image -->
           <img [src]="car.image"
                class="h-40 w-full object-cover rounded-lg mb-4" />
 
-          <!-- Infos -->
           <h3 class="text-xl font-semibold text-white mb-1">
             {{ car.model }}
           </h3>
@@ -39,17 +37,16 @@ import { NgFor } from '@angular/common';
             {{ car.year }} • {{ car.category }} • {{ car.hp }} ch
           </p>
 
-          <!-- Actions -->
           <div class="flex gap-3">
 
             <button class="flex-1 py-2 rounded-lg bg-blue-500/70 hover:bg-blue-400
                            text-black font-semibold transition">
-              ✏️ Editer
+              ✏️ Bearbeiten
             </button>
 
             <button class="flex-1 py-2 rounded-lg bg-red-500/70 hover:bg-red-400
                            text-black font-semibold transition">
-              🗑️ Supprimer
+              🗑️ löschen
             </button>
 
           </div>

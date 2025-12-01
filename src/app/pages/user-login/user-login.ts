@@ -13,9 +13,9 @@ import {Router, RouterLink} from '@angular/router';
       <div class="w-full max-w-md p-8 rounded-2xl  bg-white/10 backdrop-blur-xl
               border border-white/20 shadow-2xl animate-fadeIn">
 
-        <h1 class="text-center text-3xl font-bold text-white mb-6 tracking-wide">Connexion</h1>
+        <h1 class="text-center text-3xl font-bold text-white mb-6 tracking-wide">Verbindung</h1>
 
-        <p class="text-center text-slate-300 mb-10 text-sm">Connectez-vous pour liker et gérer vos favoris</p>
+        <p class="text-center text-slate-300 mb-10 text-sm">loggen Sie sich ein , um Favoris zu verwalten</p>
 
         <form (ngSubmit)="login()" class="space-y-6">
 
@@ -45,7 +45,7 @@ import {Router, RouterLink} from '@angular/router';
 
         <!-- Error message -->
         <div *ngIf="loginError"
-             class="text-center text-red-400 font-medium mt-5 animate-shake">Identifiants incorrects </div>
+             class="text-center text-red-400 font-medium mt-5 animate-shake">Etwas ist schiefgelaufen</div>
 
         <div class="text-center text-slate-300 mt-8 text-sm">
           Haben Sie noch kein Konto?

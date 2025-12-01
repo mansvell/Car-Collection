@@ -17,20 +17,16 @@ import { NgFor, NgIf } from '@angular/common';
         {{ selectedBrand?.name }}
       </h1>
 
-      <!-- Catégories -->
       <div class="space-y-20">
 
         <div *ngFor="let category of categoryKeys" class="animate-fadeUp">
 
-          <!-- Titre catégorie -->
           <h2 class="text-2xl font-semibold text-slate-200 mb-4">
             {{ category }}
           </h2>
 
-          <!-- Carrousel Horizontal -->
           <div class="flex gap-6 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-slate-700">
 
-            <!-- CARDS -->
             <div
               *ngFor="let car of carsFiltered[category]"
               class="min-w-[280px] max-w-[280px] bg-slate-800/60 border border-slate-700/40 rounded-2xl p-4
@@ -58,7 +54,7 @@ import { NgFor, NgIf } from '@angular/common';
     </section>
   `,
   styles: [`
-    /* Animations */
+
     .animate-fadeIn {
       animation: fadeIn 0.8s ease forwards;
     }

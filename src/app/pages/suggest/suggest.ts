@@ -12,17 +12,17 @@ import {NgForOf} from '@angular/common';
   template: `
     <section class="max-w-3xl mx-auto px-5 pt-10 pb-20">
 
-      <h1 class="text-3xl font-bold text-white text-center mb-6">Suggérer une Voiture  </h1>
+      <h1 class="text-3xl font-bold text-white text-center mb-6"> Auto vorschlägen</h1>
 
       <p class="text-center text-slate-300 mb-10">
-        Si votre voiture préférée ne figure pas encore dans notre collection,<br>
-        envoyez-nous une suggestion, elle sera examinée!
+        Wenn Ihr Lieblingsauto noch nicht in unserer Sammlung vertreten ist,<br>
+        senden Sie uns einen Vorschlag, wir werden ihn schnellstmöglich prüfen!
       </p>
 
       <form (ngSubmit)="submit()" class="space-y-6 bg-slate-900/40 p-6 rounded-xl border border-slate-700/50">
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Photo</label>
+          <label class="block text-slate-200 mb-2 font-medium">Photo </label>
 
           <input type="file" (change)="onFileSelected($event)"
                  accept="image/*"
@@ -30,47 +30,47 @@ import {NgForOf} from '@angular/common';
         </div>
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Nom du modèle</label>
+          <label class="block text-slate-200 mb-2 font-medium"> Model</label>
           <input [(ngModel)]="form.modelName" name="modelName" required
                  class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 text-slate-300"/>
         </div>
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Marque</label>
+          <label class="block text-slate-200 mb-2 font-medium">Marke</label>
           <input [(ngModel)]="form.brandName" name="brandName" required
                  class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 text-slate-300"/>
         </div>
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Année</label>
+          <label class="block text-slate-200 mb-2 font-medium">Jahr</label>
           <input type="number" [(ngModel)]="form.year" name="year" required
                  class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 focus:ring-2 focus:ring-cyan-400 text-slate-300"/>
         </div>
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Catégorie</label>
+          <label class="block text-slate-200 mb-2 font-medium">Kategorie</label>
 
           <select [(ngModel)]="form.category" name="category" required
                   class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300">
-            <option value="" disabled selected>Choisissez une catégorie</option>
+            <option value="" disabled selected>Kategorie wählen</option>
             <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
           </select>
         </div>
 
         <div>
-          <label class="text-slate-200 mb-1 block">Chevaux (HP)</label>
+          <label class="text-slate-200 mb-1 block">Mächtigkeit (HP)</label>
           <input type="number"
                  class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
         </div>
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Courte description</label>
+          <label class="block text-slate-200 mb-2 font-medium">Beschreibung</label>
           <textarea [(ngModel)]="form.description" name="description" rows="3"
                     class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"></textarea>
         </div>
 
         <div>
-          <label class="block text-slate-200 mb-2 font-medium">Votre nom (optionnel)</label>
+          <label class="block text-slate-200 mb-2 font-medium">Ihr Name (Optionnal)</label>
           <input [(ngModel)]="form.userName" name="userName"
                  class="w-full bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
         </div>

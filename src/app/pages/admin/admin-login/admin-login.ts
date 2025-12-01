@@ -14,7 +14,6 @@ import { FormsModule } from '@angular/forms';
                   bg-white/10 backdrop-blur-xl
                   border border-white/20 shadow-2xl animate-fadeIn">
 
-        <!-- Admin icon -->
         <div class="flex justify-center mb-6">
           <div class="w-14 h-14 bg-blue-500/30 rounded-full flex items-center justify-center">
             <span class="text-3xl text-blue-400">⚙️</span>
@@ -30,10 +29,8 @@ import { FormsModule } from '@angular/forms';
           Zugang nur für Administratoren.
         </p>
 
-        <!-- FORM -->
         <form class="space-y-6">
 
-          <!-- Username -->
           <div>
             <label class="text-slate-200 font-medium mb-1 block">Admin Benutzername</label>
             <input
@@ -43,25 +40,17 @@ import { FormsModule } from '@angular/forms';
               placeholder="admin" />
           </div>
 
-          <!-- Password -->
           <div>
             <label class="text-slate-200 font-medium mb-1 block">Passwort</label>
-            <input
-              type="password"
+            <input type="password"
               class="w-full px-4 py-3 rounded-xl bg-white/10 text-slate-100
                      placeholder-slate-400 border border-white/20
                      focus:outline-none focus:ring-2 focus:ring-blue-400 transition"
               placeholder="••••••••"/>
           </div>
 
-          <!-- Login Button -->
-          <button
-            type="button"
-            class="w-full py-3 rounded-xl
-                   bg-blue-500 hover:bg-blue-400
-                   text-black font-semibold tracking-wide
-                   shadow-lg hover:shadow-blue-500/40
-                   transition duration-200">
+          <button type="button" class="w-full py-3 rounded-xl  bg-blue-500 hover:bg-blue-400   text-black font-semibold
+                   tracking-wide   shadow-lg hover:shadow-blue-500/40  transition duration-200">
             Einloggen
           </button>
 

@@ -10,16 +10,14 @@ import {NgForOf} from '@angular/common';
   template: `
     <section class="pt-10 pb-20 px-5 max-w-6xl mx-auto">
 
-      <!-- Hero Section -->
       <div class="text-center mt-10 mb-16">
-        <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-wide mb-4">Explorez les Marques
-          Automobiles</h1>
+        <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-wide mb-4">
+          Entdecken Sie die Automobilmarken</h1>
         <p class="text-slate-300 text-lg opacity-80 max-w-2xl mx-auto">
-          Découvrez une collection unique de voitures de luxe, de supercars, et de modèles rares.
+          Entdecken Sie eine einzigartige Sammlung von Luxusautos, Supersportwagen und seltenen Modellen
         </p>
       </div>
 
-      <!-- Grille des Marques -->
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
 
         <div *ngFor="let brand of brands" (click)="goToBrand(brand.id)"

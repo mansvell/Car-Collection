@@ -11,7 +11,7 @@ import { NgIf } from '@angular/common';
     <section class="pt-28 pb-20 px-6 max-w-4xl mx-auto">
 
       <h1 class="text-3xl font-bold text-white tracking-wide mb-10 animate-fadeIn">
-        Ajouter / Modifier une Voiture
+        Auto hinzufügen/editieren
       </h1>
 
       <div class="bg-slate-800/50 border border-slate-700/40 p-8 rounded-2xl shadow-xl animate-fadeUp">
@@ -23,34 +23,34 @@ import { NgIf } from '@angular/common';
             <input type="file"
                    class="w-full p-2 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
           </div>
-->
+
           <div>
-            <label class="text-slate-200 mb-1 block">Modèle</label>
+            <label class="text-slate-200 mb-1 block">Model</label>
             <input class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
           </div>
 
           <div>
-            <label class="text-slate-200 mb-1 block">Marque</label>
+            <label class="text-slate-200 mb-1 block">Marke</label>
             <input class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
           </div>
 
           <div>
-            <label class="text-slate-200 mb-1 block">Année</label>
+            <label class="text-slate-200 mb-1 block">Jahr</label>
             <input type="number"
                    class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
           </div>
 
           <div>
-            <label class="text-slate-200 mb-1 block">Chevaux (HP)</label>
+            <label class="text-slate-200 mb-1 block">Mächtigkeit (HP)</label>
             <input type="number"
                    class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700" />
           </div>
 
           <div>
-            <label class="text-slate-200 mb-1 block">Catégorie</label>
+            <label class="text-slate-200 mb-1 block">Kategorie</label>
 
             <select class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700">
-              <option disabled selected>Choisir une catégorie</option>
+              <option disabled selected>Kategorie wählen</option>
               <option>SUV</option>
               <option>COUPE</option>
               <option>CABRIOLET</option>
@@ -62,14 +62,14 @@ import { NgIf } from '@angular/common';
           </div>
 
           <div>
-            <label class="text-slate-200 mb-1 block">Description</label>
+            <label class="text-slate-200 mb-1 block">Beschreibung</label>
             <textarea rows="3"
                       class="w-full px-4 py-3 rounded-xl bg-slate-900 text-slate-300 border border-slate-700"></textarea>
           </div>
 
           <button type="button"
                   class="w-full py-3 bg-cyan-500 hover:bg-cyan-400 rounded-xl text-black font-semibold shadow-xl transition">
-            Enregistrer
+            Speichern
           </button>
 
         </form>

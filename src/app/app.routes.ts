@@ -20,12 +20,12 @@ export const routes: Routes = [
   { path: 'favorites', component: Favorites },
   { path: 'admin/login', component: AdminLogin },
   {
-    path: 'admin',
+    path: 'admin',  //gleich wie admin/cars/new oder admin/cars
     children: [
       { path: '', component: AdminDashboard },
       { path: 'cars', component: AdminCarsList },
       { path: 'cars/new', component: AdminCarForm },
-      { path: 'cars/suggestadmin', component: Admin },
+      { path: 'cars/suggestadmin', component: AdminCarForm },
       { path: 'cars/:id/edit', component: AdminCarForm },
     ]
   },
