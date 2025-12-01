@@ -8,9 +8,10 @@ import {NgForOf} from '@angular/common';
     NgForOf
   ],
   template: `
+    <div class="animated-bg ">
     <section class="pt-10 pb-20 px-5 max-w-6xl mx-auto">
 
-      <div class="text-center mt-10 mb-16">
+      <div class="text-center mt-10 mb-16 ">
         <h1 class="text-4xl md:text-5xl font-extrabold text-white tracking-wide mb-4">
           Entdecken Sie die Automobilmarken</h1>
         <p class="text-slate-300 text-lg opacity-80 max-w-2xl mx-auto">
@@ -30,8 +31,50 @@ import {NgForOf} from '@angular/common';
 
       </div>
     </section>
+    </div>
   `,
-  styles: ``,
+  styles: [`
+    /* 🔥 Animated Gradient Background */
+    .animated-bg {
+      background: linear-gradient(-45deg, #05273c, #06273c, #0a142c, #012d2e);
+      background-size: 400% 400%;
+      animation: gradientShift 8s ease infinite;
+    }
+
+    @keyframes gradientShift {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  `],
   standalone: true
 })
 export class Home {
