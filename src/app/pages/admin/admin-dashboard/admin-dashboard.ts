@@ -63,11 +63,11 @@ import {RouterLink} from '@angular/router';
               📄 Alle Autos ansehen
             </button>
 
-            <button routerLink="/admin/cars/suggestadmin" class="py-3 bg-yellow-500/80 hover:bg-yellow-400 rounded-xl text-black font-semibold transition">
-              ⭐ Vorschlag
+            <button routerLink="/admin/cars/adminentschd" class="py-3 bg-yellow-500/80 hover:bg-yellow-400 rounded-xl text-black font-semibold transition">
+              ⭐ Entscheidung
             </button>
 
-            <button class="py-3 bg-red-500/80 hover:bg-red-400 rounded-xl text-black font-semibold transition">
+            <button routerLink="/admin/logout" class="py-3 bg-red-500/80 hover:bg-red-400 rounded-xl text-black font-semibold transition">
               🔒 Sich ausloggen
             </button>
 

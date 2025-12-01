@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import {RouterLink} from '@angular/router';
 
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   template: `
 
     <div class="min-h-screen flex items-center justify-center px-4
@@ -20,7 +21,6 @@ import { FormsModule } from '@angular/forms';
           </div>
         </div>
 
-        <!-- Title -->
         <h1 class="text-center text-3xl font-bold text-white mb-6 tracking-wide">
           Admin Login
         </h1>
@@ -49,7 +49,7 @@ import { FormsModule } from '@angular/forms';
               placeholder="••••••••"/>
           </div>
 
-          <button type="button" class="w-full py-3 rounded-xl  bg-blue-500 hover:bg-blue-400   text-black font-semibold
+          <button routerLink="/admin/admindashb" type="button" class="w-full py-3 rounded-xl  bg-blue-500 hover:bg-blue-400   text-black font-semibold
                    tracking-wide   shadow-lg hover:shadow-blue-500/40  transition duration-200">
             Einloggen
           </button>
