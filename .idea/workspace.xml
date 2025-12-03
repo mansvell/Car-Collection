@@ -5,32 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="weiterleitung">
-      <change afterPath="$PROJECT_DIR$/.idea/CarCollection.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/9cc70bba-c332-4eac-9292-5ff31629ae35.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources/9cc70bba-c332-4eac-9292-5ff31629ae35/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/HELP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/mvnw" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/mvnw.cmd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/CarCollectionBackendApplication.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/application.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/test/java/com/example/carcollectionbackend/CarCollectionBackendApplicationTests.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarCollectionFrontend" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionFrontend/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionFrontend/src/app/pages/home/home.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionFrontend" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +38,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "ts.external.directory.path": "C:\\Users\\Nkwanga\\CarCollection\\CarCollectionFrontend\\node_modules\\typescript\\lib",
+    "ts.external.directory.path": "C:\\Users\\Nkwanga\\CarCollection\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -102,7 +78,7 @@
       <updated>1764366421505</updated>
       <workItem from="1764366423361" duration="47861000" />
       <workItem from="1764676643063" duration="3921000" />
-      <workItem from="1764692214764" duration="6956000" />
+      <workItem from="1764692214764" duration="8512000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
