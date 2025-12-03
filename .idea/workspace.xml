@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="weiterleitung">
+      <change afterPath="$PROJECT_DIR$/.idea/CarCollection.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/9cc70bba-c332-4eac-9292-5ff31629ae35.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources/9cc70bba-c332-4eac-9292-5ff31629ae35/storage_v2/_src_/schema/main.uQUzAA.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/.gitattributes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/HELP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/mvnw" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/mvnw.cmd" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/CarCollectionBackendApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionBackend/src/test/java/com/example/carcollectionbackend/CarCollectionBackendApplicationTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarCollectionFrontend" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionFrontend/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionFrontend/src/app/pages/home/home.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="SYNC" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="367nKjLWrkjKnTuaVIcCLffjsOj" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "jdk.selected.JAVA_MODULE": "21",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Nkwanga/CarCollection",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "ts.external.directory.path": "C:\\Users\\Nkwanga\\CarCollection\\CarCollectionFrontend\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "ChangesTree.GroupingKeys": [
+      "directory",
+      "module"
+    ],
+    "DatabaseDriversLRU": [
+      "sqlite"
+    ]
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration name="CarCollectionBackendApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="CarCollectionBackend" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.carcollectionbackend.CarCollectionBackendApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-18abd8497189-intellij.indexing.shared.core-IU-241.14494.240" />
+        <option value="bundled-js-predefined-1d06a55b98c1-74d2a5396914-JavaScript-IU-241.14494.240" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="" />
+      <created>1764366421505</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1764366421505</updated>
+      <workItem from="1764366423361" duration="47861000" />
+      <workItem from="1764676643063" duration="3921000" />
+      <workItem from="1764692214764" duration="6956000" />
+    </task>
+    <task id="LOCAL-00001" summary="Struktur projekt">
+      <option name="closed" value="true" />
+      <created>1764367676775</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764367676775</updated>
+    </task>
+    <task id="LOCAL-00002" summary="weiterleitung">
+      <option name="closed" value="true" />
+      <created>1764790429012</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1764790429012</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Struktur projekt" />
+    <MESSAGE value="weiterleitung" />
+    <option name="LAST_COMMIT_MESSAGE" value="weiterleitung" />
+  </component>
+</project>
