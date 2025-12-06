@@ -1,0 +1,50 @@
+CREATE TABLE IF NOT EXISTS users(
+  id INTEGER PRIMARY KEY AUTOINCREMENT ,
+  vorname TEXT NOT NULL,
+  nachname TEXT NOT NULL,
+  email TEXT NOT NULL,
+  password TEXT NOT NULL,
+  role TEXT NOT NULL DEFAULT 'USER'
+);
+
+CREATE TABLE IF NOT EXISTS brands(
+  bid INTEGER PRIMARY KEY AUTOINCREMENT,
+  name TEXT NOT NULL ,
+  logo TEXT
+);
+
+CREATE TABLE IF NOT EXISTS cars(
+  cid INTEGER PRIMARY KEY AUTOINCREMENT,
+  brand_id INTEGER NOT NULL ,
+  model TEXT NOT NULL ,
+  year INTEGER,
+  hp INTEGER,
+  category TEXT NOT NULL,
+  logo TEXT,
+  description TEXT,
+  FOREIGN KEY (brand_id) REFERENCES brands(bid) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS suggestions (
+    sid INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER,
+    logo TEXT,
+    model TEXT NOT NULL,
+    brand TEXT,
+    year INTEGER,
+    category TEXT NOT NULL,
+    hp INTEGER,
+    description TEXT NOT NULL,
+    status TEXT NOT NULL DEFAULT 'PENDING',
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE SET NULL
+);
+CREATE TABLE IF NOT EXISTS favorites (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER NOT NULL,
+    car_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (car_id) REFERENCES cars(cid) ON DELETE CASCADE,
+
+    UNIQUE (user_id, car_id) -- prevents duplicate likes
+);

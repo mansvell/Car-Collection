@@ -6,12 +6,20 @@
   <component name="ChangeListManager">
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="weiterleitung">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionFrontend" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -78,7 +86,7 @@
       <updated>1764366421505</updated>
       <workItem from="1764366423361" duration="47861000" />
       <workItem from="1764676643063" duration="3921000" />
-      <workItem from="1764692214764" duration="8512000" />
+      <workItem from="1764692214764" duration="13034000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
