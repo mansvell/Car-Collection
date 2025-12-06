@@ -2,38 +2,38 @@ CREATE TABLE IF NOT EXISTS users(
   id INTEGER PRIMARY KEY AUTOINCREMENT ,
   vorname TEXT NOT NULL,
   nachname TEXT NOT NULL,
-  email TEXT NOT NULL,
-  password TEXT NOT NULL,
+  email TEXT UNIQUE NOT NULL,
+  password TEXT UNIQUE NOT NULL,
   role TEXT NOT NULL DEFAULT 'USER'
 );
 
 CREATE TABLE IF NOT EXISTS brands(
   bid INTEGER PRIMARY KEY AUTOINCREMENT,
   name TEXT NOT NULL ,
-  logo TEXT
+  logo TEXT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS cars(
   cid INTEGER PRIMARY KEY AUTOINCREMENT,
   brand_id INTEGER NOT NULL ,
   model TEXT NOT NULL ,
-  year INTEGER,
-  hp INTEGER,
+  year INTEGER NOT NULL,
+  hp INTEGER NOT NULL,
   category TEXT NOT NULL,
-  logo TEXT,
-  description TEXT,
+  logo TEXT NOT NULL,
+  description TEXT NOT NULL,
   FOREIGN KEY (brand_id) REFERENCES brands(bid) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS suggestions (
     sid INTEGER PRIMARY KEY AUTOINCREMENT,
     user_id INTEGER,
-    logo TEXT,
+    logo TEXT NOT NULL,
     model TEXT NOT NULL,
-    brand TEXT,
-    year INTEGER,
+    brand TEXT NOT NULL,
+    year INTEGER NOT NULL,
     category TEXT NOT NULL,
-    hp INTEGER,
+    hp INTEGER NOT NULL,
     description TEXT NOT NULL,
     status TEXT NOT NULL DEFAULT 'PENDING',
 
