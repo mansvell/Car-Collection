@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/Favorite.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/Suggestion.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionFrontend" beforeDir="false" />
     </list>
@@ -55,6 +56,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.gitlab.GitLabSettingsConfigurable",
     "ts.external.directory.path": "C:\\Users\\Nkwanga\\CarCollection\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   },
@@ -95,7 +97,7 @@
       <updated>1764366421505</updated>
       <workItem from="1764366423361" duration="47861000" />
       <workItem from="1764676643063" duration="3921000" />
-      <workItem from="1764692214764" duration="20163000" />
+      <workItem from="1764692214764" duration="22285000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
