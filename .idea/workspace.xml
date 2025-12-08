@@ -4,16 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="weiterleitung">
+    <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="Farbe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/Brand.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/Car.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/Favorite.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/Suggestion.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionFrontend" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/FavoriteController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/SuggestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/CarService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +94,7 @@
       <updated>1764366421505</updated>
       <workItem from="1764366423361" duration="47861000" />
       <workItem from="1764676643063" duration="3921000" />
-      <workItem from="1764692214764" duration="24295000" />
+      <workItem from="1764692214764" duration="28485000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
@@ -115,7 +112,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764790429012</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Farbe">
+      <option name="closed" value="true" />
+      <created>1765056967256</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765056967256</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -124,6 +129,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Struktur projekt" />
     <MESSAGE value="weiterleitung" />
-    <option name="LAST_COMMIT_MESSAGE" value="weiterleitung" />
+    <MESSAGE value="Farbe" />
+    <option name="LAST_COMMIT_MESSAGE" value="Farbe" />
   </component>
 </project>

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+/* Service kommuniziert mit dem Repository und kümmert sich um die Logik*/
 @Service
 @RequiredArgsConstructor
 public class CarService {
