@@ -7,6 +7,10 @@
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="Farbe">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/Entities/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/Entities/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/BrandController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/UserController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -90,7 +94,7 @@
       <updated>1764366421505</updated>
       <workItem from="1764366423361" duration="47861000" />
       <workItem from="1764676643063" duration="3921000" />
-      <workItem from="1764692214764" duration="34023000" />
+      <workItem from="1764692214764" duration="37505000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />

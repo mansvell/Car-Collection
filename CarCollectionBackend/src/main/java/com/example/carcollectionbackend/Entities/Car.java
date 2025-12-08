@@ -23,7 +23,10 @@ public class Car {
   @Column(nullable=false)
   private String model;
   @Column(nullable=false)
-  private String year;
+  private Integer year;
+
+  @Column(nullable=false)
+  private Integer hp;
 
   @Column(nullable=false)
   private String category;

@@ -1,6 +1,11 @@
 package com.example.carcollectionbackend.controller;
 
 import com.example.carcollectionbackend.Entities.User;
+import com.example.carcollectionbackend.dto.LoginDTO;
+import com.example.carcollectionbackend.dto.LoginResponseDTO;
+import com.example.carcollectionbackend.dto.RegisterDTO;
+import com.example.carcollectionbackend.dto.UserDTO;
+import com.example.carcollectionbackend.mapper.EntityMapper;
 import com.example.carcollectionbackend.security.JwtService;
 import com.example.carcollectionbackend.service.UserService;
 import lombok.Data;
@@ -17,21 +22,31 @@ public class UserController {
   private final JwtService jwt;
 
   @PostMapping("/register")
-  public User register(@RequestBody User user) {
-    return service.register(user);
+  public UserDTO register(@RequestBody RegisterDTO registerDTO) {
+
+    User newUser = new User();
+    newUser.setVorname(registerDTO.getVorname());
+    newUser.setNachname(registerDTO.getNachname());
+    newUser.setEmail(registerDTO.getEmail());
+    newUser.setPassword(registerDTO.getPassword());
+
+    User saved = service.register(newUser);
+
+    return EntityMapper.toUserDTO(saved);
   }
 
   @PostMapping("/login")
-  public LoginRequest login(@RequestBody LoginRequest request) {
-    User user = service.login(request.getEmail(), request.getPassword());
+  public LoginResponseDTO login(@RequestBody LoginDTO dto) {
+
+    User user = service.login(dto.getEmail(), dto.getPassword());
     String token = jwt.generateToken(user.getEmail());
 
-    return new LoginRequest(user.getId(), user.getVorname(), user.getEmail(), token);
+    return new LoginResponseDTO(
+      user.getId(),
+      user.getVorname(),
+      user.getEmail(),
+      token
+    );
   }
 }
 
-@Data
-class LoginRequest {
-  private String email;
-  private String password;
-}
