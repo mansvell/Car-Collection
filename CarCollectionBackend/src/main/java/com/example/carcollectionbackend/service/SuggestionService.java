@@ -20,4 +20,10 @@ public class SuggestionService {
   public Suggestion save(Suggestion s) {
     return repo.save(s);
   }
+  public void updateStatus(Long id, String status) {
+    Suggestion s = repo.findById(id).orElseThrow();
+    s.setStatus(status);
+    repo.save(s);
+  }
+
 }

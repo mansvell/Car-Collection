@@ -7,7 +7,7 @@ import com.example.carcollectionbackend.service.BrandService;
 import com.example.carcollectionbackend.service.CarService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import com.example.carcollectionbackend.Entities.Brand
+import com.example.carcollectionbackend.Entities.Brand;
 
 import java.util.List;
 
@@ -34,7 +34,7 @@ public class CarController {
 
     Brand brand = brandService.getBrandById(brandId);
 
-    return service.getCarsByBrand(brandId)
+    return service.getCarsByBrand(brand)
       .stream()
       .map(EntityMapper::toCarDTO)
       .toList();

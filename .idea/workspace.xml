@@ -10,7 +10,12 @@
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/Entities/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/Entities/Car.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/BrandController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/BrandController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/CarController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/CarController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/FavoriteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/FavoriteController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/SuggestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/SuggestionController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/BrandService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/BrandService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/CarService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/CarService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/SuggestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/SuggestionService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +99,7 @@
       <updated>1764366421505</updated>
       <workItem from="1764366423361" duration="47861000" />
       <workItem from="1764676643063" duration="3921000" />
-      <workItem from="1764692214764" duration="37505000" />
+      <workItem from="1764692214764" duration="44976000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
