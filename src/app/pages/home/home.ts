@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {NgForOf} from '@angular/common';
+import {BrandService} from '../../api/brand.service';
 
 @Component({
   selector: 'app-home',
@@ -34,7 +35,7 @@ import {NgForOf} from '@angular/common';
     </div>
   `,
   styles: [`
-    /* 🔥 Animated Gradient Background */
+    /* Animated Gradient Background */
     .animated-bg {
       background: linear-gradient(-45deg, #05273c, #06273c, #0a142c, #012d2e);
       background-size: 400% 400%;
@@ -79,9 +80,25 @@ import {NgForOf} from '@angular/common';
 })
 export class Home {
 
-  constructor(private router: Router) {}
 
-  // Marques (en dur pour l'instant)
+  brands: any[] = [];
+
+  constructor(
+    private router: Router,
+    private brandService: BrandService
+  ) {}
+
+  ngOnInit() {
+    this.brandService.getAll().subscribe((data: any) => {
+      this.brands = data;
+    });
+  }
+
+  goToBrand(id: number) {
+    this.router.navigate(['/brand', id]);
+  }
+
+  /* Marques (en dur pour l'instant)
   brands = [
     { id: 1, name: 'Ferrari', logo: 'https://i.ibb.co/hK5kVWK/ferrari.png' },
     { id: 2, name: 'Lamborghini', logo: 'https://i.ibb.co/5KXG8gd/lamborghini.png' },
@@ -95,6 +112,6 @@ export class Home {
 
   goToBrand(id: number) {
     this.router.navigate(['/brand', id]);
-  }
+  }*/
 
 }

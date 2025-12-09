@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
+import {UserService} from '../../api/user.service';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ import {Router} from '@angular/router';
 
         <p class="text-center text-slate-300 mb-8 text-sm">Erstellen Sie Ihr persönliches Konto </p>
 
-        <form (ngSubmit)="register()" class="space-y-6">
+        <form (ngSubmit)="regist()" class="space-y-6">
           <div>
             <label class="text-slate-200 mb-1 block">Vorname</label>
             <input [(ngModel)]="form.vorname" name="vorname" required
@@ -95,32 +96,44 @@ export class Register {
     nachname: '',
     email: '',
     password: '',
-    password2: ''
+    password2: ''   // ← AJOUT ESSENTIEL
   };
 
-  error = false;
-  success = false;
+  loading = false;
+  error = '';
+  success = false;   // ← NECESSAIRE pour ton *ngIf="success"
 
-  constructor(private router: Router) {}
+  constructor(private api: UserService, private router: Router) {}
 
-  register() {
+  regist() {   // ← Le nom doit correspondre à (ngSubmit)="register()"
+    this.error = '';
+
+    // Vérifier mots de passe
     if (this.form.password !== this.form.password2) {
-      this.error = true;
-      this.success = false;
+      this.error = 'Die Passwörter stimmen nicht überein.';
       return;
     }
 
-    // Plus tard , envoyer vers backend Spring Boot
-    this.error = false;
-    this.success = true;
+    this.loading = true;
 
-    console.log('Neues Konto:', this.form);
+    const payload = {
+      vorname: this.form.vorname,
+      nachname: this.form.nachname,
+      email: this.form.email,
+      password: this.form.password
+    };
 
-    // Redirection dans quelques secondes (optionnel)
-    setTimeout(() => {
-      this.router.navigate(['/login']);
-    }, 1500);
+    this.api.register(payload).subscribe({
+      next: () => {
+        this.success = true;
+
+        // Rediriger après 1 seconde
+        setTimeout(() => this.router.navigate(['/userlogin']), 1000);
+      },
+      error: () => {
+        this.error = 'Fehler beim Registrieren';
+        this.loading = false;
+      }
+    });
   }
-
-
 }

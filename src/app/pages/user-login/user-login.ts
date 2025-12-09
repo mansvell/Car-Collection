@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
+import { UserService } from '../../api/user.service';
+
 
 @Component({
   selector: 'app-user-login',
@@ -87,16 +89,29 @@ export class UserLogin {
   password = '';
   loginError = false;
 
-  constructor(private router: Router) {}
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
 
   login() {
-    // Pour l’instant on simule uniquement
-    if (this.username === 'user' && this.password === '1234') {
-      this.loginError = false;
-      this.router.navigate(['/']);
-    } else {
-      this.loginError = true;
-    }
+    this.loginError = false;
+
+    this.userService.login({
+      email: this.username,
+      password: this.password
+    }).subscribe({
+      next: (res: any) => {
+        this.userService.saveToken(res.token);
+        localStorage.setItem('userId', res.id.toString());
+
+        this.router.navigate(['/']);
+      },
+      error: () => {
+        this.loginError = true;
+      }
+    });
   }
+
 }
 

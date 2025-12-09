@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { NgFor, NgIf } from '@angular/common';
+import {BrandService} from '../../api/brand.service';
+import {CarService} from '../../api/car.service';
 
 @Component({
   selector: 'app-brand',
@@ -87,6 +89,42 @@ export class Brand {
   categoryKeys: string[] = [];
   carsFiltered: any = {};
 
+  constructor(
+    private route: ActivatedRoute,
+    private brandService: BrandService,
+    private carService: CarService
+  ) {}
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    /** Charger la marque **/
+    this.brandService.getAll().subscribe((brands: any[]) => {
+      this.selectedBrand = brands.find(b => b.bid === id);
+    });
+
+    /** Charger les voitures par marque **/
+    this.carService.getByBrand(id).subscribe((cars: any[]) => {
+
+      // initialiser catégories
+      this.categoryKeys = [];
+      cars.forEach(c => {
+        if (!this.categoryKeys.includes(c.category)) {
+          this.categoryKeys.push(c.category);
+        }
+      });
+
+      // initialiser map
+      this.categoryKeys.forEach(cat => this.carsFiltered[cat] = []);
+
+      // regrouper
+      cars.forEach(car => this.carsFiltered[car.category].push(car));
+    });
+  }
+  /*selectedBrand: any = null;
+  categoryKeys: string[] = [];
+  carsFiltered: any = {};
+
   constructor(private route: ActivatedRoute) {}
 
   brands = [
@@ -125,5 +163,5 @@ export class Brand {
     this.cars
       .filter(c => c.brandId === id)
       .forEach(c => this.carsFiltered[c.category].push(c));
-  }
+  }*/
 }

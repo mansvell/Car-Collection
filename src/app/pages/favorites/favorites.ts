@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { NgFor } from '@angular/common';
+import { FavoritesService } from '../../api/favorites.service';
+import { UserService } from '../../api/user.service';
+
 
 @Component({
   selector: 'app-favorites',
@@ -30,7 +33,7 @@ import { NgFor } from '@angular/common';
             {{ car.year }} • {{ car.hp }} ch
           </div>
 
-          <button class="w-full py-2 rounded-xl bg-red-500/80 hover:bg-red-400 cursor-pointer
+          <button (click)="remove(car.carId)" class="w-full py-2 rounded-xl bg-red-500/80 hover:bg-red-400 cursor-pointer
                          text-black font-semibold shadow transition">
             entfernen
           </button>
@@ -61,11 +64,36 @@ import { NgFor } from '@angular/common';
 })
 export class Favorites {
 
-  // PURE FRONTEND — static sample data
+  favoriteCars: any[] = [];
+
+  constructor(
+    private favService: FavoritesService,
+    private userService: UserService
+  ) {}
+
+  ngOnInit() {
+    const userId = Number(localStorage.getItem('userId'));
+
+    if (!userId) return;
+
+    this.favService.getUserFavorites(userId).subscribe((data: any) => {
+      this.favoriteCars = data;
+    });
+  }
+
+  remove(carId: number) {
+    const userId = Number(localStorage.getItem('userId'));
+
+    this.favService.remove(userId, carId).subscribe(() => {
+      this.favoriteCars = this.favoriteCars.filter(f => f.carId !== carId);
+    });
+  }
+
+  /* PURE FRONTEND — static sample data
   favoriteCars = [
     { model: 'LaFerrari', year: 2015, hp: 950, image: 'https://i.ibb.co/vdkcYSt/laferrari.jpg' },
     { model: 'F8 Tributo', year: 2021, hp: 710, image: 'https://i.ibb.co/6X7cLZD/tribu.jpg' },
     { model: 'Chiron', year: 2020, hp: 1500, image: 'https://i.ibb.co/ZmNYt8n/chiron.jpg' }
-  ];
+  ];*/
 }
 

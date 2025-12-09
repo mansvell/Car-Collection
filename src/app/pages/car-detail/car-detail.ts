@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {CarService} from '../../api/car.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-car-details',
@@ -42,5 +44,18 @@ import { Component } from '@angular/core';
   `]
 })
 export class CarDetail {
+  car: any = null;
 
+  constructor(
+    private route: ActivatedRoute,
+    private carService: CarService
+  ) {}
+
+  ngOnInit() {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
+    this.carService.getAll().subscribe((cars: any[]) => {
+      this.car = cars.find(c => c.cid === id);
+    });
+  }
 }
