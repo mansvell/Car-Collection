@@ -98,19 +98,19 @@ export class Brand {
   ngOnInit() {
     const id = Number(this.route.snapshot.paramMap.get('id'));
 
-    /** Charger la marque **/
+    // Marken laden
     this.brandService.getAll().subscribe((brands: any[]) => {
       this.selectedBrand = brands.find(b => b.bid === id);
     });
 
-    /** Charger les voitures par marque **/
+     // Autos per Mark laden
     this.carService.getByBrand(id).subscribe((cars: any[]) => {
 
-      // initialiser catégories
+      //Kat initialisieren
       this.categoryKeys = [];
       cars.forEach(c => {
-        if (!this.categoryKeys.includes(c.category)) {
-          this.categoryKeys.push(c.category);
+        if (!this.categoryKeys.includes(c.category)) { // man überprüft , ob die Cat des Autos schon in gesamten Cat ist,
+          this.categoryKeys.push(c.category);          // wenn nicht, wird diese hinzugefügt
         }
       });
 

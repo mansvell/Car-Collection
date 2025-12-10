@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import {Router, RouterLink} from '@angular/router';
+import {UserService} from '../../api/user.service';
 
 @Component({
   selector: 'app-logout',
@@ -36,4 +37,13 @@ import { RouterLink } from '@angular/router';
 })
 export class Logout {
 
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
+
+  ngOnInit() {
+    // Déconnexion user simple
+    this.userService.logout();
+  }
 }

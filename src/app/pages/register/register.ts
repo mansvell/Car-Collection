@@ -2,11 +2,13 @@ import { Component } from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {Router} from '@angular/router';
 import {UserService} from '../../api/user.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-register',
   imports: [
-    FormsModule
+    FormsModule,
+    NgIf
   ],
   template: `
     <div class="min-h-screen flex items-center justify-center px-4">

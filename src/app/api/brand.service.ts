@@ -11,6 +11,6 @@ export class BrandService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get(this.base);
+    return this.http.get<any[]>(this.base);
   }
 }

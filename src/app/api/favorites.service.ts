@@ -11,7 +11,7 @@ export class FavoritesService {
   constructor(private http: HttpClient) {}
 
   getUserFavorites(userId: number) {
-    return this.http.get(this.api + '/' + userId);
+    return this.http.get<any[]>(this.api + '/' + userId);
   }
 
   add(userId: number, carId: number) {

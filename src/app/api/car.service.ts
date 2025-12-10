@@ -11,10 +11,10 @@ export class CarService {
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get(this.api);
+    return this.http.get<any[]>(this.api);
   }
 
   getByBrand(brandId: number) {
-    return this.http.get(this.api + '/brand/' + brandId);
+    return this.http.get<any[]>(this.api + '/brand/' + brandId);
   }
 }

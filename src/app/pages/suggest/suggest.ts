@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {NgForOf} from '@angular/common';
+import {SuggestionService} from '../../api/suggestion.service';
 
 @Component({
   selector: 'app-suggest',
@@ -24,7 +25,7 @@ import {NgForOf} from '@angular/common';
         <div>
           <label class="block text-slate-200 mb-2 font-medium">Photo </label>
 
-          <input type="file" (change)="onFileSelected($event)"
+          <input [(ngModel)]="form.logo" name="logo" placeholder="URL der Foto eingeben"
                  accept="image/*"
                  class="w-full text-sm bg-slate-800/60 border border-slate-700/70 rounded-lg p-2 text-slate-300"/>
         </div>
@@ -102,7 +103,22 @@ export class Suggest {
     userEmail: ''
   };
 
-  selectedFile: File | null = null;
+  submitted = false;
+
+  categories = [
+    'SUV', 'COUPE', 'CABRIOLET', 'SUPERCAR', 'HYPERCAR', 'CLASSIC', 'COLLECTION'
+  ];
+
+  constructor(private suggestionService: SuggestionService) {}
+
+  submit() {
+    this.form.userId = Number(localStorage.getItem('userId'));
+
+    this.suggestionService.sendSuggestion(this.form).subscribe({
+      next: () => this.submitted = true
+    });
+  }
+  /*selectedFile: File | null = null;
   submitted = false;
 
   categories = [
@@ -121,5 +137,5 @@ export class Suggest {
 
     // Plus tard → envoyer au backend via un vrai service REST
     console.log('Suggestion envoyée : ', this.form, this.selectedFile);
-  }
+  }*/
 }

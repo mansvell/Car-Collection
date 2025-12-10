@@ -22,13 +22,13 @@ export const routes: Routes = [
   { path: 'register', component: Register },
   {path: 'suggest', component: Suggest},
   { path: 'favorites', component: Favorites },
-  { path: 'admin', component: AdminLogin },
+  { path: 'logout', component: Logout },
   {
     path: 'admin',  //gleich wie admin/cars/new oder admin/cars
     children: [
+      { path: '', component: AdminLogin },
       { path: 'admindashb', component: AdminDashboard },
       { path: 'cars', component: AdminCarsList },
-      { path:'logout', component: Logout},
       { path: 'cars/new', component: AdminCarForm },
       { path: 'cars/adminentschd', component: AdminEntscheidung },
       { path: 'cars/:id/edit', component: AdminCarForm },
