@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { NgFor, NgIf } from '@angular/common';
+import { NgFor} from '@angular/common';
 import {BrandService} from '../../api/brand.service';
 import {CarService} from '../../api/car.service';
 
 @Component({
   selector: 'app-brand',
   standalone: true,
-  imports: [NgFor, NgIf],
+  imports: [NgFor],
   template: `
     <section class="pt-24 pb-20 px-5 max-w-6xl mx-auto">
 

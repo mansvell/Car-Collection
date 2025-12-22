@@ -3,12 +3,13 @@ import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 import {NgForOf} from '@angular/common';
 import {SuggestionService} from '../../api/suggestion.service';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-suggest',
   imports: [
     FormsModule,
-    NgForOf
+    NgForOf, NgIf
   ],
   template: `
     <section class="max-w-3xl mx-auto px-5 pt-10 pb-20">

@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-admin-car-form',
   standalone: true,
-  imports: [FormsModule, NgIf],
+  imports: [FormsModule],
   template: `
 
     <section class="pt-28 pb-20 px-6 max-w-4xl mx-auto">

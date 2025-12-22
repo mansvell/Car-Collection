@@ -2,12 +2,13 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import {Router, RouterLink} from '@angular/router';
 import { UserService } from '../../api/user.service';
+import {NgIf} from '@angular/common';
 
 
 @Component({
   selector: 'app-user-login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, RouterLink, NgIf],
   template: `
 
     <div class="min-h-screen flex items-center justify-center px-4"> <!--min-h-screen= 100% ecran -->
