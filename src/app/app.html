@@ -10,7 +10,7 @@
       </div>
 
       <nav class="flex items-center gap-8 text-sm cursor-pointer">
-        <a routerLink="/" routerLinkActive="text-cyan-400" class="hover:text-cyan-300  ">Home</a>
+        <a routerLink="/" routerLinkActive="text-cyan-400" [routerLinkActiveOptions]="{ exact: true }" class="hover:text-cyan-300  ">Home</a>
         <a routerLink="/suggest" routerLinkActive="text-cyan-400" class="hover:text-cyan-300  ">Vorschlag</a>
         <a routerLink="/favorites" routerLinkActive="text-cyan-400" class="hover:text-cyan-300  ">Favoris</a>
         <a routerLink="/userlogin"  routerLinkActive="text-cyan-400" class="hover:text-cyan-300" > Login</a>

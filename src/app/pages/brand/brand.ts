@@ -1,23 +1,23 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { NgFor} from '@angular/common';
+import {ActivatedRoute, Router} from '@angular/router';
+import {NgFor, NgIf} from '@angular/common';
 import {BrandService} from '../../api/brand.service';
 import {CarService} from '../../api/car.service';
 
 @Component({
   selector: 'app-brand',
   standalone: true,
-  imports: [NgFor],
+  imports: [NgFor, NgIf],
   template: `
     <section class="pt-24 pb-20 px-5 max-w-6xl mx-auto">
 
-      <div class="w-full flex justify-center mb-14 animate-fadeIn">
-        <img [src]="selectedBrand?.logo" [alt]="selectedBrand?.name" class="h-28 opacity-90 drop-shadow-xl" />
-      </div>
-
-      <h1 class="text-center text-4xl font-bold text-white tracking-wide mb-16 animate-fadeIn">
+      <img *ngIf="selectedBrand?.logo"
+           [src]="selectedBrand.logo"
+           [alt]="selectedBrand.name"
+           class="h-28 opacity-90 drop-shadow-xl mb-3" />
+      <div class="text-white font-semibold tracking-wide text-xl">
         {{ selectedBrand?.name }}
-      </h1>
+      </div>
 
       <div class="space-y-20">
 
@@ -30,11 +30,11 @@ import {CarService} from '../../api/car.service';
           <div class="flex gap-6 overflow-x-auto pb-3 scrollbar-thin scrollbar-thumb-slate-700">
 
             <div
-              *ngFor="let car of carsFiltered[category]"
+              *ngFor="let car of carsFiltered[category]" (click)="goToCar(car.cid)"
               class="min-w-[280px] max-w-[280px] bg-slate-800/60 border border-slate-700/40 rounded-2xl p-4
                      hover:scale-[1.05] hover:shadow-2xl transition duration-200 cursor-pointer shadow-md">
 
-              <img [src]="car.image"
+              <img [src]="car.logo"
                    class="h-40 w-full object-cover rounded-lg mb-4" />
 
               <div class="text-white font-semibold text-lg mb-1">
@@ -86,24 +86,61 @@ import {CarService} from '../../api/car.service';
 export class Brand {
 
   selectedBrand: any = null;
-  categoryKeys: string[] = [];
-  carsFiltered: any = {};
+  categoryKeys: string[] = ['SUV','COUPE','CABRIOLET','SUPERCAR','HYPERCAR','CLASSIC','COLLECTION'];
+  carsFiltered: Record<string, any[]> = {};
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private brandService: BrandService,
     private carService: CarService
   ) {}
 
   ngOnInit() {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.resetBuckets();
 
-    // Marken laden
-    this.brandService.getAll().subscribe((brands: any[]) => {
-      this.selectedBrand = brands.find(b => b.bid === id);
+    this.route.paramMap.subscribe(params => {
+      const id = Number(params.get('id'));
+      if (!id) return;
+
+      this.selectedBrand = null;
+      this.resetBuckets();
+
+      //lädt Brand (logo + name)
+      this.brandService.getAll().subscribe({
+        next: (brands: any[]) => {
+          this.selectedBrand = brands.find(b => b.bid === id) ?? null;
+        },
+        error: (err) => {
+          console.error('GET /brands failed', err);
+          this.selectedBrand = null;
+        }
+      });
+
+      //lädt Cars von brand
+      this.carService.getByBrand(id).subscribe({
+        next: (cars: any[]) => {
+          cars.forEach(c => {
+            const normalized = String(c.category ?? '').trim().toUpperCase();
+            const key = this.carsFiltered[normalized] ? normalized : 'OTHER';
+            this.carsFiltered[key].push(c);
+          });
+        },
+        error: (err) => console.error('GET /cars/brand failed', err)
+      });
     });
+  }
 
-     // Autos per Mark laden
+  private resetBuckets() {
+    this.categoryKeys.forEach(cat => this.carsFiltered[cat] = []);
+  }
+  goToCar(cid: number) {
+    if (!cid) return;
+    this.router.navigate(['/car', cid]);
+  }
+}
+
+     /* Autos per Mark laden
     this.carService.getByBrand(id).subscribe((cars: any[]) => {
 
       //Kat initialisieren
@@ -120,7 +157,9 @@ export class Brand {
       // regrouper
       cars.forEach(car => this.carsFiltered[car.category].push(car));
     });
-  }
+    */
+
+
   /*selectedBrand: any = null;
   categoryKeys: string[] = [];
   carsFiltered: any = {};
@@ -164,4 +203,4 @@ export class Brand {
       .filter(c => c.brandId === id)
       .forEach(c => this.carsFiltered[c.category].push(c));
   }*/
-}
+

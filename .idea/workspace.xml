@@ -5,18 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="api">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/schema.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-car-form/admin-car-form.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/admin/admin-car-form/admin-car-form.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/target/classes/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/target/classes/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/api/auth.interceptor.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/auth.interceptor.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.config.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/brand/brand.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/brand/brand.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/suggest/suggest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/suggest/suggest.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/user-login/user-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/user-login/user-login.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/home/home.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/environments/environment.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/environments/environment.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tsconfig.app.json" beforeDir="false" afterPath="$PROJECT_DIR$/tsconfig.app.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;File.Encoding&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.typescriptcompiler&quot;,
     &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Nkwanga\\CarCollection\\node_modules\\typescript\\lib&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -114,7 +112,8 @@
       <workItem from="1764676643063" duration="3921000" />
       <workItem from="1764692214764" duration="68098000" />
       <workItem from="1765826390658" duration="4630000" />
-      <workItem from="1766394440034" duration="3267000" />
+      <workItem from="1766394440034" duration="15172000" />
+      <workItem from="1766414975809" duration="6111000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
@@ -160,5 +159,9 @@
     <MESSAGE value="Farbe" />
     <MESSAGE value="api" />
     <option name="LAST_COMMIT_MESSAGE" value="api" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

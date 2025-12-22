@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import {Router} from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 import {NgForOf} from '@angular/common';
 import {BrandService} from '../../api/brand.service';
+import {filter} from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,7 @@ import {BrandService} from '../../api/brand.service';
 
       <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6">
 
-        <div *ngFor="let brand of brands" (click)="goToBrand(brand.id)"
+        <div *ngFor="let brand of brands" (click)="goToBrand(brand.bid)"
           class="cursor-pointer bg-slate-800/40 border border-slate-700/40 rounded-xl p-5 flex flex-col items-center
                  hover:bg-slate-800 hover:scale-[1.03] hover:shadow-xl transition-all duration-200">
 
@@ -86,18 +87,35 @@ export class Home {
   constructor(
     private router: Router,
     private brandService: BrandService
-  ) {}
+  ) {
+  }
 
-  ngOnInit() {
-    this.brandService.getAll().subscribe((data: any) => {
-      this.brands = data;
+  ngOnInit():void {
+    this.loadBrands();
+
+    this.router.events
+      .pipe(filter(e => e instanceof NavigationEnd))
+      .subscribe(() => {
+        if (this.router.url === '/' || this.router.url === '') {
+          this.loadBrands();
+        }
+      });
+  }
+  private loadBrands() {
+    this.brandService.getAll().subscribe({
+      next: (data: any) => this.brands = data,
+      error: (err) => {
+        console.error('GET /brands failed', err);
+        this.brands = [];
+      }
     });
   }
 
   goToBrand(id: number) {
+    if (!id) return;
     this.router.navigate(['/brand', id]);
   }
-
+}
   /* Marques (en dur pour l'instant)
   brands = [
     { id: 1, name: 'Ferrari', logo: 'https://i.ibb.co/hK5kVWK/ferrari.png' },
@@ -114,4 +132,3 @@ export class Home {
     this.router.navigate(['/brand', id]);
   }*/
 
-}
