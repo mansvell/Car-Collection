@@ -11,4 +11,14 @@ import {RouterOutlet, RouterLink, RouterLinkActive} from '@angular/router';
 })
 export class App {
   protected readonly title = signal('CarCollectionFrontend');
+  //Mobile menu
+  menuOpen = signal(false);
+
+  toggleMenu() {
+    this.menuOpen.update(v => !v);
+  }
+
+  closeMenu() {
+    this.menuOpen.set(false);
+  }
 }

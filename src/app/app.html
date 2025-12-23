@@ -1,23 +1,163 @@
-<div class="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-slate-100"><!--fond animé -->
+<div class="min-h-screen bg-slate-50 text-slate-900">
+  <header class="sticky top-0 z-50">
+    <div class="w-full border-b border-slate-200/70 bg-white/70 backdrop-blur-xl">
+      <div class="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
 
-  <header class="fixed top-0 left-0 right-0 z-20 backdrop-blur bg-slate-900/70 border-b border-slate-800/50">
-    <div class="max-w-6xl mx-auto flex items-center justify-between px-2 py-4">
+        <!-- Logo / Brand -->
+        <a routerLink="/" (click)="closeMenu()"
+           class="group flex items-center gap-3">
+          <div class="grid h-10 w-10 place-items-center rounded-2xl bg-sky-500/15 ring-1 ring-sky-500/25 shadow-sm">
+            <span class="font-black text-sky-600">CC</span>
+          </div>
 
-      <div class="flex items-center gap-3 ">
+          <div class="leading-tight">
+            <div class="font-extrabold tracking-tight">
+              CarCollection <span class="text-red-500">•</span>
+            </div>
+            <div class="text-xs text-slate-500 -mt-0.5">Mansvell</div>
+          </div>
+        </a>
 
-        <div class="w-9 h-9 rounded-full bg-cyan-400 shadow-lg animate-pulse"></div>
-        <span class="font-semibold  uppercase text-xs"> CarCollection </span>
+        <!-- Desktop nav -->
+        <nav class="hidden md:flex items-center gap-1">
+
+          <a routerLink="/"
+             (click)="closeMenu()"
+             routerLinkActive="text-sky-700"
+             [routerLinkActiveOptions]="{ exact: true }"
+             class="group relative rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition
+                    hover:text-sky-700">
+            <span>Brands</span>
+            <span class="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-sky-400 transition group-hover:scale-x-100"></span>
+          </a>
+
+          <!-- Autos -->
+          <a routerLink="/autos"
+             (click)="closeMenu()"
+             routerLinkActive="text-sky-700"
+             class="group relative rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition
+                    hover:text-sky-700">
+            <span>Autos</span>
+            <span class="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-sky-400 transition group-hover:scale-x-100"></span>
+          </a>
+
+          <a routerLink="/suggest"
+             (click)="closeMenu()"
+             routerLinkActive="text-sky-700"
+             class="group relative rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition
+                    hover:text-sky-700">
+            <span>Vorschlag</span>
+            <span class="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-sky-400 transition group-hover:scale-x-100"></span>
+          </a>
+
+          <a routerLink="/userlogin"
+             (click)="closeMenu()"
+             routerLinkActive="text-sky-700"
+             class="group relative rounded-full px-4 py-2 text-sm font-semibold text-slate-700 transition
+                    hover:text-sky-700">
+            <span>Login</span>
+            <span class="absolute inset-x-3 -bottom-0.5 h-0.5 origin-left scale-x-0 rounded-full bg-sky-400 transition group-hover:scale-x-100"></span>
+          </a>
+
+          <!-- Admin (pill)-->
+          <a routerLink="/admin"
+             (click)="closeMenu()"
+             routerLinkActive="ring-sky-300/70 text-sky-800"
+             class="ml-2 rounded-full px-4 py-2 text-sm font-extrabold text-slate-800
+                    bg-white/60 ring-1 ring-slate-300/70 shadow-sm transition
+                    hover:ring-sky-300/70 hover:text-sky-800">
+            Administrator
+          </a>
+        </nav>
+
+        <!-- Mobile button -->
+        <button type="button"
+                (click)="toggleMenu()"
+                class="md:hidden inline-flex items-center gap-2 rounded-xl px-3 py-2
+                       bg-sky-500/10 ring-1 ring-sky-500/20 text-sky-800 font-semibold
+                       shadow-sm active:scale-[0.98] transition">
+          <span class="text-sm">Menü</span>
+          <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
       </div>
-
-      <nav class="flex items-center gap-8 text-sm cursor-pointer">
-        <a routerLink="/" routerLinkActive="text-cyan-400" [routerLinkActiveOptions]="{ exact: true }" class="hover:text-cyan-300  ">Home</a>
-        <a routerLink="/suggest" routerLinkActive="text-cyan-400" class="hover:text-cyan-300  ">Vorschlag</a>
-        <a routerLink="/favorites" routerLinkActive="text-cyan-400" class="hover:text-cyan-300  ">Favoris</a>
-        <a routerLink="/userlogin"  routerLinkActive="text-cyan-400" class="hover:text-cyan-300" > Login</a>
-        <a routerLink="/admin"  class="px-4 py-2 rounded-full bg-slate-800 hover:bg-cyan-500 hover:text-blacktransition-all text-xs font-semibold">Administrator</a>
-      </nav>
-
     </div>
+
+    <!--Mobile menu -->
+    @if (menuOpen()) {
+      <div class="md:hidden">
+        <!--backdrop -->
+        <div class="fixed inset-0 z-40 bg-slate-900/35 backdrop-blur-sm" (click)="closeMenu()"></div>
+
+        <!-- panel -->
+        <div class="fixed left-0 right-0 top-16 z-50 px-4 sm:px-6">
+          <div class="rounded-2xl border border-sky-200/40 bg-white/70 backdrop-blur-xl shadow-2xl">
+            <div class="p-3">
+
+              <div class="mb-2 flex items-center justify-between px-2">
+                <div class="text-xs font-bold tracking-widest text-slate-500">NAVIGATION</div>
+                <button (click)="closeMenu()"
+                        class="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600 hover:text-sky-700 transition">
+                  Fermer ✕
+                </button>
+              </div>
+
+              <div class="grid gap-2">
+                <a routerLink="/" (click)="closeMenu()"
+                   routerLinkActive="bg-sky-500/15 text-sky-800 ring-sky-300/60"
+                   [routerLinkActiveOptions]="{ exact: true }"
+                   class="flex items-center justify-between rounded-xl px-4 py-3 font-semibold
+                          text-slate-900 ring-1 ring-slate-200/70 bg-white/40 shadow-sm transition
+                          hover:bg-sky-500/10 hover:ring-sky-300/50">
+                  <span>Brands</span><span class="text-sky-500">→</span>
+                </a>
+
+                <a routerLink="/autos" (click)="closeMenu()"
+                   routerLinkActive="bg-sky-500/15 text-sky-800 ring-sky-300/60"
+                   class="flex items-center justify-between rounded-xl px-4 py-3 font-semibold
+                          text-slate-900 ring-1 ring-slate-200/70 bg-white/40 shadow-sm transition
+                          hover:bg-sky-500/10 hover:ring-sky-300/50">
+                  <span>Autos</span><span class="text-sky-500">→</span>
+                </a>
+
+                <a routerLink="/suggest" (click)="closeMenu()"
+                   routerLinkActive="bg-sky-500/15 text-sky-800 ring-sky-300/60"
+                   class="flex items-center justify-between rounded-xl px-4 py-3 font-semibold
+                          text-slate-900 ring-1 ring-slate-200/70 bg-white/40 shadow-sm transition
+                          hover:bg-sky-500/10 hover:ring-sky-300/50">
+                  <span>Vorschlag</span><span class="text-sky-500">→</span>
+                </a>
+
+                <a routerLink="/userlogin" (click)="closeMenu()"
+                   routerLinkActive="bg-sky-500/15 text-sky-800 ring-sky-300/60"
+                   class="flex items-center justify-between rounded-xl px-4 py-3 font-semibold
+                          text-slate-900 ring-1 ring-slate-200/70 bg-white/40 shadow-sm transition
+                          hover:bg-sky-500/10 hover:ring-sky-300/50">
+                  <span>Login</span><span class="text-sky-500">→</span>
+                </a>
+
+                <a routerLink="/admin" (click)="closeMenu()"
+                   routerLinkActive="bg-sky-500/15 text-sky-800 ring-sky-300/60"
+                   class="flex items-center justify-between rounded-xl px-4 py-3 font-extrabold
+                          text-slate-900 ring-1 ring-slate-200/70 bg-white/40 shadow-sm transition
+                          hover:bg-sky-500/10 hover:ring-sky-300/50">
+                  <span>Administrator</span><span class="text-red-500">⚙</span>
+                </a>
+              </div>
+
+              <!-- petit bandeau “rouge larve” + bleu -->
+              <div class="mt-3 rounded-xl bg-gradient-to-r from-red-500/10 via-sky-500/10 to-transparent
+                          p-3 ring-1 ring-slate-200/60">
+                <div class="text-sm font-semibold text-slate-900">Premium vibe ✅</div>
+                <div class="text-xs text-slate-500">Blur • Ombres • Hover sky • Accent rouge</div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    }
   </header>
 
   <main class="pt-20">

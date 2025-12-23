@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 import { Home } from './pages/home/home';
-import { Brand } from './pages/brand/brand';
+import { Autos } from './pages/autos/autos';
 import { UserLogin } from './pages/user-login/user-login';
 import {AdminCarForm} from './pages/admin/admin-car-form/admin-car-form';
 import { AdminCarsList} from './pages/admin/admin-cars-list/admin-cars-list';
@@ -16,12 +16,11 @@ import {CarDetail} from './pages/car-detail/car-detail';
 
 export const routes: Routes = [
   { path:'' , component:Home},
-  { path: 'brand/:id', component: Brand },
+  { path: 'autos', component: Autos },
   { path: 'userlogin', component: UserLogin },
   { path: 'car/:id', component: CarDetail},
   { path: 'register', component: Register },
   {path: 'suggest', component: Suggest},
-  { path: 'favorites', component: Favorites },
   { path: 'logout', component: Logout },
   {
     path: 'admin',  //gleich wie admin/cars/new oder admin/cars
