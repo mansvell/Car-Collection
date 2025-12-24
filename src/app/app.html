@@ -6,15 +6,15 @@
         <!-- Logo / Brand -->
         <a routerLink="/" (click)="closeMenu()"
            class="group flex items-center gap-3">
-          <div class="grid h-10 w-10 place-items-center rounded-2xl bg-sky-500/15 ring-1 ring-sky-500/25 shadow-sm">
-            <span class="font-black text-sky-600">CC</span>
+          <div class="grid h-10 w-20 place-items-center rounded-2xl bg-sky-500/15 ring-1 ring-sky-500/25 shadow-sm">
+            <img src="images/MNK.png" alt="Logo" class="h-10 w-auto " />
           </div>
 
           <div class="leading-tight">
             <div class="font-extrabold tracking-tight">
               CarCollection <span class="text-red-500">•</span>
             </div>
-            <div class="text-xs text-slate-500 -mt-0.5">Mansvell</div>
+            <div class="text-xs text-slate-500 -mt-0.5">Mansvell NK</div>
           </div>
         </a>
 
@@ -99,7 +99,7 @@
                 <div class="text-xs font-bold tracking-widest text-slate-500">NAVIGATION</div>
                 <button (click)="closeMenu()"
                         class="rounded-lg px-2 py-1 text-sm font-semibold text-slate-600 hover:text-sky-700 transition">
-                  Fermer ✕
+                  Schließen X
                 </button>
               </div>
 
@@ -139,18 +139,10 @@
 
                 <a routerLink="/admin" (click)="closeMenu()"
                    routerLinkActive="bg-sky-500/15 text-sky-800 ring-sky-300/60"
-                   class="flex items-center justify-between rounded-xl px-4 py-3 font-extrabold
-                          text-slate-900 ring-1 ring-slate-200/70 bg-white/40 shadow-sm transition
-                          hover:bg-sky-500/10 hover:ring-sky-300/50">
+                   class="mt-3 rounded-xl bg-gradient-to-r from-red-500/10 via-sky-500/10 to-transparent
+                          p-3 ring-1 ring-slate-200/60">
                   <span>Administrator</span><span class="text-red-500">⚙</span>
                 </a>
-              </div>
-
-              <!-- petit bandeau “rouge larve” + bleu -->
-              <div class="mt-3 rounded-xl bg-gradient-to-r from-red-500/10 via-sky-500/10 to-transparent
-                          p-3 ring-1 ring-slate-200/60">
-                <div class="text-sm font-semibold text-slate-900">Premium vibe ✅</div>
-                <div class="text-xs text-slate-500">Blur • Ombres • Hover sky • Accent rouge</div>
               </div>
 
             </div>
