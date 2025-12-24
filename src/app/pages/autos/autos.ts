@@ -389,7 +389,6 @@ export class Autos {
     });
   }
 
-  // ---------- modal ----------
   openCar(car: Car) {
     this.selectedCar = car;
   }

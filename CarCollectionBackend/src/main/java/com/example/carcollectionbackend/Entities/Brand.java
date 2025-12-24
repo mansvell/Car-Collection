@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+/*Stellt die Tabellen der DB dar */
+
 @Entity
 @Table(name="brands")
 @Data
@@ -22,4 +24,20 @@ public class Brand {
   @Column(nullable = false)
   private String logo;
 
+  @Column(name= "founded_year")
+  private Integer foundedYear;
+
+  @Column(name= "foundedBy")
+  private String foundedBy;
+
+  @Column(name= "currentOwner")
+  private String currentOwner;
+  @Column(name= "employeesApprox")
+  private Integer employeesApprox;
+
+  @Column(name= "originCountry")
+  private String originCountry;
+
+  @Column(name= "description")
+  private String description;
 }

@@ -3,7 +3,8 @@ package com.example.carcollectionbackend.mapper;
 import com.example.carcollectionbackend.dto.*;
 import com.example.carcollectionbackend.Entities.*;
 
-/*convertir Entity → DTO*/
+/* Entity in DTO umwandeln und umgekehrt, vermeidet die Duplikation des Code*/
+
 public class EntityMapper {
 
   public static UserDTO toUserDTO(User u) {
@@ -35,6 +36,13 @@ public class EntityMapper {
     dto.setBid(b.getBid());
     dto.setName(b.getName());
     dto.setLogo(b.getLogo());
+
+    dto.setFoundedYear(b.getFoundedYear());
+    dto.setFoundedBy(b.getFoundedBy());
+    dto.setCurrentOwner(b.getCurrentOwner());
+    dto.setEmployeesApprox(b.getEmployeesApprox());
+    dto.setOriginCountry(b.getOriginCountry());
+    dto.setDescription(b.getDescription());
     return dto;
   }
 
