@@ -35,7 +35,7 @@ type Car = {
           </div>
 
           <h2 class="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 text-center">
-            Autos werden hier pro<span class="text-sky-600"> Brand </span> angezeigt
+            Autos werden hier pro<span class="text-sky-600"> Marken </span> angezeigt
           </h2>
           <p class="mt-4 text-slate-600 ">
             Klicken Sie auf ⭐ ,wenn Ihnen ein Model besonders gut gefallen hat
@@ -112,7 +112,7 @@ type Car = {
 
                     <div class="mt-2 flex items-center justify-between text-sm">
                       <div class="inline-flex items-center gap-2 text-slate-600">
-                        <span class="font-bold text-slate-800">{{ car.year }}</span>
+                        <span class="font-bold text-slate-800">{{ car.year }} €</span>
                         <span >•</span>
                         <span class="font-semibold text-slate-800">{{ car.hp }} HP</span>
                       </div>
@@ -187,7 +187,7 @@ type Car = {
                   <div class="h-px bg-slate-200/70"></div>
                   <div class="flex items-center justify-between">
                     <span class="text-slate-500 font-semibold">Jahr</span>
-                    <span class="text-slate-900 font-extrabold">{{ selectedCar.year }}</span>
+                    <span class="text-slate-900 font-extrabold">{{ selectedCar.year }} €</span>
                   </div>
                   <div class="h-px bg-slate-200/70"></div>
 
