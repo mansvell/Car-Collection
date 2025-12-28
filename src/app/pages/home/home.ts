@@ -47,9 +47,9 @@ type Brand = {
           [class.opacity-60]="selectedBrand">
 
           <div *ngFor="let brand of brands" (click)="openStory(brand)"
-               class="cursor-pointer flex flex-col items-center hover:scale-[1.5] transition-transform duration-200">
+               class="cursor-pointer flex flex-col items-center hover:scale-[1.1] transition-transform duration-200">
 
-            <img [src]="brand.logo" [alt]="brand.name" class="lg:h-50 w-auto sm:h-24   drop-shadow-lg " />
+            <img [src]="brand.logo" [alt]="brand.name" class="lg:h-50 w-auto sm:h-24  object-contain drop-shadow-lg " />
 
             <span class="mt-3 text-slate-900 font-extrabold tracking-tight">
               {{ brand.name }}
@@ -68,7 +68,7 @@ type Brand = {
         </div>
       </section>
 
-      <!--STORY (blur  + animation) -->
+
       <div *ngIf="selectedBrand"
            class="fixed inset-0 z-50 flex items-center justify-center px-4 sm:px-6">
 

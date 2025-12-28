@@ -7,7 +7,12 @@
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/target/classes/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/target/classes/data.sqlite" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/autos/autos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/autos/autos.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/home/home.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/register/register.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/register/register.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/suggest/suggest.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/suggest/suggest.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/pages/user-login/user-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/user-login/user-login.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +112,7 @@
       <workItem from="1764692214764" duration="68098000" />
       <workItem from="1765826390658" duration="4630000" />
       <workItem from="1766394440034" duration="15172000" />
-      <workItem from="1766414975809" duration="48935000" />
+      <workItem from="1766414975809" duration="56718000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />

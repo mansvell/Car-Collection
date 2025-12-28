@@ -12,11 +12,10 @@ type Car = {
   year: number;
   hp: number;
   category: string;
-  logo: string;        // image (chez toi c’est "logo")
+  logo: string;
   description: string;
 
-  // optionnel plus tard (si tu ajoutes dans backend)
-  model3dUrl?: string; // .glb
+  model3dUrl?: string;
 };
 
 @Component({
@@ -25,7 +24,7 @@ type Car = {
   template: `
     <div class="relative overflow-hidden">
 
-      <section class="relative z-10 pt-10 pb-16 px-4 max-w-7xl mx-auto ">
+      <section class="relative z-10 pt-1 pb-16 px-4 max-w-7xl mx-auto ">
         <div class="mb-8 px-6 py-6 bg-blue-200 rounded-4xl">
           <div class="inline-flex items-center gap-2 rounded-full bg-blue-50 px-4 py-2 ring-1 ring-slate-200/70 shadow-sm backdrop-blur">
             <span class="h-2 w-2 rounded-full bg-sky-500"></span>
