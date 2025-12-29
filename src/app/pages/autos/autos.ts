@@ -167,7 +167,6 @@ type Car = {
           <!-- details -->
           <div class="p-5 sm:p-6">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-              <!-- description -->
               <div class="md:col-span-2 rounded-2xl bg-white/55 ring-1 ring-slate-200/70 p-5">
                 <div class="text-xs font-bold tracking-widest text-slate-500 uppercase">Beschreibung</div>
                 <p class="mt-2 text-sm leading-relaxed text-slate-700">
@@ -185,7 +184,7 @@ type Car = {
                   </div>
                   <div class="h-px bg-slate-200/70"></div>
                   <div class="flex items-center justify-between">
-                    <span class="text-slate-500 font-semibold">Jahr</span>
+                    <span class="text-slate-500 font-semibold">Preis</span>
                     <span class="text-slate-900 font-extrabold">{{ selectedCar.year }} €</span>
                   </div>
                   <div class="h-px bg-slate-200/70"></div>

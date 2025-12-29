@@ -21,7 +21,7 @@ type Brand = {
   selector: 'app-home',
   imports: [NgForOf, NgIf],
   template: `
-    <div class="relative overflow-hidden">
+    <div class="relative overflow-hidden ">
 
       <section class="relative pt-6 pb-10 px-4 sm:px-6 lg:px-6 max-w-7xl mx-auto">
         <div class="text-center mt-2 mb-15">

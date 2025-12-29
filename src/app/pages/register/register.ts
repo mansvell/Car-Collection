@@ -9,7 +9,7 @@ import { NgIf } from '@angular/common';
   standalone: true,
   imports: [FormsModule, NgIf],
   template: `
-    <div class="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-white via-slate-50 to-slate-100">
+    <div class="flex items-center justify-center px-4 bg-gradient-to-b via-slate-500 to-slate-10">
       <div class="w-full max-w-lg animate-page-enter">
 
         <div class="rounded-3xl bg-white/70 backdrop-blur-xl ring-1 ring-slate-200/70

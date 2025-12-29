@@ -7,9 +7,9 @@ import { SuggestionService } from '../../api/suggestion.service';
   selector: 'app-suggest',
   imports: [FormsModule, NgForOf, NgIf],
   template: `
-    <section class="max-w-3xl mx-auto px-5 pt-2 pb-20 animate-page-enter">
+    <div class=" bg-gradient-to-b via-slate-500 to-slate-10">
+      <section class="max-w-3xl mx-auto px-5 pt-2 pb-20 animate-page-enter ">
 
-      <!-- Header -->
       <div class="text-center">
         <div class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2
                     ring-1 ring-slate-200/70 shadow-sm backdrop-blur">
@@ -122,18 +122,19 @@ import { SuggestionService } from '../../api/suggestion.service';
                        transition duration-200
                        hover:brightness-110 hover:-translate-y-0.5
                        active:translate-y-0 active:scale-[0.99]">
-          Envoyer la suggestion
+          Vorschlag senden
         </button>
 
         <!-- Success -->
         <div *ngIf="submitted"
              class="rounded-2xl bg-white/70 ring-1 ring-emerald-200/70 p-4 text-center animate-pop">
-          <div class="font-extrabold text-emerald-700">Votre suggestion a été envoyée ✔</div>
-          <div class="text-sm text-slate-600 mt-1">Merci ! On la traitera dès que possible.</div>
+          <div class="font-extrabold text-emerald-700">Ihr Vorschla wurde erfolgreich gesendet</div>
+          <div class="text-sm text-slate-600 mt-1">Danke! Wir werden ihn so schnell wie möglich behandeln</div>
         </div>
 
       </form>
-    </section>
+     </section>
+    </div>
   `,
   styles: [`
     @keyframes pageEnter {
