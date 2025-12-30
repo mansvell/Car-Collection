@@ -79,8 +79,8 @@ type Car = {
                      (click)="openCar(car)"
                      class="relative group cursor-pointer flex-shrink-0 w-[260px] sm:w-[300px]
                             rounded-2xl bg-white/60 backdrop-blur-xl ring-1 ring-slate-200/70
-                            shadow-[0_10px_30px_-20px_rgba(2,6,23,0.35)]
-                            transition duration-200 hover:-translate-y-1 hover:shadow-[0_18px_45px_-22px_rgba(2,6,23,0.45)]
+
+                            transition duration-200 hover:-translate-y-1 hover:shadow shadow-blue-500
                             active:translate-y-0 active:scale-[0.99]">
 
                   <!-- image -->
