@@ -7,16 +7,10 @@ import { RouterLink } from '@angular/router';
   standalone: true,
   imports: [NgFor, NgIf, RouterLink],
   template: `
-    <div class="min-h-screen bg-gradient-to-b from-white via-slate-50 to-slate-100">
-      <!-- Scroll progress (cool) -->
-      <div class="fixed top-0 left-0 right-0 z-40 h-1 bg-transparent">
-        <div class="h-1 bg-gradient-to-r from-sky-500 via-sky-600 to-red-500"
-             [style.width.%]="scrollProgress"></div>
-      </div>
+    <div class="min-h-screen bg-gradient-to-b via-slate-500 to-slate-10">
 
-      <section class="pt-24 pb-20 px-5 sm:px-6 max-w-7xl mx-auto animate-page-enter">
+      <section class="pt-5 pb-20 px-5 sm:px-6 max-w-8xl mx-auto animate-page-enter">
 
-        <!-- Top bar -->
         <div class="flex items-start justify-between gap-4">
           <div>
             <div class="inline-flex items-center gap-2 rounded-full bg-white/70 px-4 py-2
@@ -32,22 +26,18 @@ import { RouterLink } from '@angular/router';
             </h1>
 
             <p class="mt-2 text-slate-600 text-sm sm:text-base">
-              Monitoring, Warteschlange und Entscheidungen — alles an einem Ort.
+              Monitoring, Warteschlange und Entscheidungen — alles an einem Ort
             </p>
           </div>
 
-          <!-- Strategic professional logout (sticky-like) -->
-          <div class="shrink-0">
+          <div >
             <a routerLink="/admin/logout"
-               class="group inline-flex items-center gap-2 rounded-2xl px-4 py-3
-                      bg-white/70 backdrop-blur ring-1 ring-slate-200/70 shadow-sm
-                      hover:ring-red-200/70 transition">
+               class="inline-flex items-center gap-2 rounded-2xl px-2 py-2  ring-1 ring-slate-200/70
+                      hover:bg-red-300 ">
               <span class="grid h-9 w-9 place-items-center rounded-xl bg-red-500/10 ring-1 ring-red-200/60">
                 🔒
               </span>
-              <span class="font-extrabold text-slate-800 group-hover:text-red-600 transition">
-                Logout
-              </span>
+              <span class="font-extrabold  hover:text-white "> Sich Aussloggen</span>
             </a>
           </div>
         </div>
@@ -76,9 +66,7 @@ import { RouterLink } from '@angular/router';
           </div>
         </div>
 
-        <!-- Overview section -->
         <div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-4">
-
           <div class="lg:col-span-2 rounded-3xl bg-white/70 backdrop-blur-xl ring-1 ring-slate-200/70
                       shadow p-6 sm:p-7">
             <div class="flex items-start justify-between gap-4">
@@ -100,12 +88,17 @@ import { RouterLink } from '@angular/router';
 
             <div class="mt-5 grid grid-cols-1 sm:grid-cols-3 gap-5 text-sm">
 
-              <div class="rounded-2xl bg-white/60 ring-5 ring-blue-300 p-4">
+              <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
                 <p class=" font-bold text-slate-500">Letztes hinzugefügtes Auto: </p>
                 <p class="mt-1 font-extrabold text-slate-900">{{ overview.lastCar }}</p>
               </div>
 
-              <div class="rounded-2xl bg-white/60 ring-5 ring-blue-300 p-4">
+              <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
+                <p class=" font-bold text-slate-500">Letzte hinzugefügte Marke: </p>
+                <p class="mt-1 font-extrabold text-slate-900">{{ overview.brandName }}</p>
+              </div>
+
+              <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
                 <p class=" font-bold text-slate-500">Vorschläge in Warteschlange : </p>
                 <p class="mt-1 font-extrabold text-slate-900">
                   {{ overview.pendingSuggestions }}
@@ -114,20 +107,15 @@ import { RouterLink } from '@angular/router';
                 </p>
               </div>
 
-              <div class="rounded-2xl bg-white/60 ring-5 ring-blue-300 p-4">
-                <p class=" font-bold text-slate-500">Letzte hinzugefügte Marke: </p>
-                <p class="mt-1 font-extrabold text-slate-900">{{ overview.brandName }}</p>
-              </div>
-
-              <div class="rounded-2xl bg-white/60 ring-5 ring-blue-300 p-4">
+              <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
                 <p class=" font-bold text-slate-500">Letzte Verbindung als Admin: </p>
                 <p class="mt-1 font-extrabold text-slate-900">{{ overview.lastAdminLogin }}</p>
               </div>
-              <div class="rounded-2xl bg-white/60 ring-5 ring-blue-300 p-4">
-                <p class=" font-bold text-slate-500">Letzte hinzugefügte Marke :</p>
-                <p class="mt-1 font-extrabold text-slate-900">{{ overview.brandName }}</p>
+              <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
+                <p class=" font-bold text-slate-500">Letztes Appsupdate :</p>
+                <p class="mt-1 font-extrabold text-slate-900"> 01.01.2025</p>
               </div>
-              <div class="rounded-2xl bg-white/60 ring-5 ring-blue-300 p-4">
+              <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
                 <p class=" font-bold text-slate-500">Letzte hinzugefügte Marke :</p>
                 <p class="mt-1 font-extrabold text-slate-900">{{ overview.brandName }}</p>
               </div>
@@ -141,13 +129,12 @@ import { RouterLink } from '@angular/router';
         <!-- Divider -->
         <div class="mt-14 flex items-center gap-3">
           <div class="h-px flex-1 bg-sky-500 "></div>
-          <div class="text-xs font-bold tracking-widest text-slate-500 uppercase">
+          <div class=" font-bold text-slate-500 uppercase">
             Wartende Vorschläge
           </div>
           <div class="h-px flex-1 bg-sky-500"></div>
         </div>
 
-        <!-- Pending suggestions list -->
         <div class="mt-8 space-y-4">
           <div *ngFor="let s of pendingSuggestions; let i = index"
                class="rounded-3xl bg-white/70 backdrop-blur-xl ring-1 ring-slate-200/70
@@ -187,7 +174,7 @@ import { RouterLink } from '@angular/router';
 
                 <div class="mt-5 grid grid-cols-2 gap-3 text-sm">
                   <div class="rounded-2xl bg-white/60 ring-1 ring-slate-200/70 p-4">
-                    <div class="text-xs font-bold text-slate-500">Jahr</div>
+                    <div class="text-xs font-bold text-slate-500">Preis</div>
                     <div class="mt-1 font-extrabold text-slate-900">{{ s.year }}</div>
                   </div>
 
@@ -209,14 +196,11 @@ import { RouterLink } from '@angular/router';
                   </p>
                 </div>
 
-                <!-- Actions -->
                 <div class="mt-5 flex flex-col sm:flex-row gap-3">
                   <button type="button"
                           class="flex-1 rounded-2xl py-3 font-extrabold text-white
                                  bg-gradient-to-r from-emerald-500 to-sky-600
-                                 shadow-lg shadow-emerald-500/10
-                                 hover:brightness-110 hover:-translate-y-0.5 transition
-                                 active:translate-y-0 active:scale-[0.99]">
+                                 hover:brightness-110 hover:-translate-y-0.5">
                     Zusagen
                   </button>
 
@@ -264,7 +248,6 @@ export class AdminDashboard {
   scrollProgress = 0;
   revealEnabled = false;
 
-  // UI stats (mock)
   stats = [
     { label: 'Gesamte Autos', value: '28', icon: '🚗' },
     { label: 'Gesamte Marken', value: '8', icon: '🏷️' },

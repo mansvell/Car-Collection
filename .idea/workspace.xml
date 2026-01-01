@@ -6,17 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-car-form/admin-car-form.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-car-form/admin-car-form.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-cars-list/admin-cars-list.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-cars-list/admin-cars-list.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-dashboard/admin-dashboard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/admin/admin-dashboard/admin-dashboard.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-entscheidung/admin-entscheidung.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-entscheidung/admin-entscheidung.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/autos/autos.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/autos/autos.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/car-detail/car-detail.spec.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/car-detail/car-detail.ts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +106,7 @@
       <workItem from="1764692214764" duration="68098000" />
       <workItem from="1765826390658" duration="4630000" />
       <workItem from="1766394440034" duration="15172000" />
-      <workItem from="1766414975809" duration="73577000" />
+      <workItem from="1766414975809" duration="76981000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />
