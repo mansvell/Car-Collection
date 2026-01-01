@@ -6,7 +6,9 @@ Retourne des Entities */
 import com.example.carcollectionbackend.Entities.Brand;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface BrandRepository extends JpaRepository<Brand, Long> {
+import java.util.Optional;
 
+public interface BrandRepository extends JpaRepository<Brand, Long> {
+  Optional<Brand> findByNameIgnoreCase(String name);
 }
 

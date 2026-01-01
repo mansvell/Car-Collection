@@ -6,6 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/repository/BrandRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/repository/BrandRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/SuggestionService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/service/SuggestionService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-dashboard/admin-dashboard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/admin/admin-dashboard/admin-dashboard.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +108,7 @@
       <workItem from="1764692214764" duration="68098000" />
       <workItem from="1765826390658" duration="4630000" />
       <workItem from="1766394440034" duration="15172000" />
-      <workItem from="1766414975809" duration="76981000" />
+      <workItem from="1766414975809" duration="79377000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />

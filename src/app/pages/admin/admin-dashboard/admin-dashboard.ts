@@ -112,12 +112,12 @@ import { RouterLink } from '@angular/router';
                 <p class="mt-1 font-extrabold text-slate-900">{{ overview.lastAdminLogin }}</p>
               </div>
               <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
-                <p class=" font-bold text-slate-500">Letztes Appsupdate :</p>
-                <p class="mt-1 font-extrabold text-slate-900"> 01.01.2025</p>
+                <p class=" font-bold text-slate-500">Abgesagte Vorschläge</p>
+                <p class="mt-1 font-extrabold text-slate-900"> 2</p>
               </div>
               <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
-                <p class=" font-bold text-slate-500">Letzte hinzugefügte Marke :</p>
-                <p class="mt-1 font-extrabold text-slate-900">{{ overview.brandName }}</p>
+                <p class=" font-bold text-slate-500">Zugesagte Vorschläge :</p>
+                <p class="mt-1 font-extrabold text-slate-900">2</p>
               </div>
 
             </div>
