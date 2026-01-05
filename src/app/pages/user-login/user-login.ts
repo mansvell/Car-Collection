@@ -40,7 +40,7 @@ import { NgIf } from '@angular/common';
 
             <div class="space-y-2">
               <label class="text-slate-700 font-extrabold block">Email</label>
-              <input [(ngModel)]="username" name="username" required
+              <input [(ngModel)]="email" name="username" required
                      class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                             placeholder:text-slate-400 shadow-sm transition
                             focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:ring-offset-2 focus:ring-offset-white"
@@ -69,7 +69,7 @@ import { NgIf } from '@angular/common';
           <div *ngIf="loginError"
                class="mt-5 rounded-2xl bg-white/70 ring-1 ring-red-200/70 p-4 text-center animate-shake">
             <div class="font-extrabold text-red-600">Etwas ist schiefgelaufen</div>
-            <div class="text-sm text-slate-600 mt-1">Bitte prüfen Sie Email & Passwort.</div>
+            <div class="text-sm text-slate-600 mt-1">{{ errorMsg || 'Bitte prüfen Sie Email & Passwort' }}</div>
           </div>
 
           <div class="text-center text-slate-600 mt-8 text-sm">
@@ -109,6 +109,8 @@ export class UserLogin {
   email = '';
   password = '';
   loginError = false;
+  loading = false;
+  errorMsg = '';
 
   constructor(
     private userService: UserService,
@@ -119,22 +121,45 @@ export class UserLogin {
 
   login() {
     this.loginError = false;
+    this.errorMsg = '';
+    this.loading = true;
+
+    const payload = {
+      email: this.email.trim(),
+      password: this.password
+    };
     /**
      * Appel backend: POST /api/users/login
-     * le backend renvoie LoginResponseDTO:
-     * { id, vorname, email, token }
+     * on weiterleiten les Eingaben du User a userService de Angular dank des INhalts von payload
      */
-    this.userService.login({ email: this.email, password: this.password }).subscribe({
+    this.userService.login(payload).subscribe({
       next: (res: any) => {
+        // sécurité: vérifier que la réponse contient bien ce qu'on attend
+        if (!res?.token || !res?.id) {
+          this.loginError = true;
+          this.errorMsg = 'Login-Response ist ungültig (token/id fehlt).';
+          this.loading = false;
+          return;
+        }
         this.userService.saveToken(res.token);
         this.userService.saveUserId(res.id);
 
         //intelligente Weiterleitung: si on est venu ici depuis /suggest, on revient sur /suggest
         const redirect = this.route.snapshot.queryParamMap.get('redirect') || '/';
         this.router.navigate([redirect]);
+        this.loading = false;
       },
-      error: () => {
-        this.loginError = true;
+      error: (err) => {
+        // ici on is.loginError = true;
+        const status = err?.status;
+        const msg =
+          err?.error?.message ||
+          err?.error ||
+          err?.message ||
+          'Unbekannter Fehler';
+
+        this.errorMsg = `Login fehlgeschlagen (HTTP ${status}): ${msg}`;
+        this.loading = false;
       }
     });
   }

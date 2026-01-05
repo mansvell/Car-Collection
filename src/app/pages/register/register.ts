@@ -184,7 +184,9 @@ export class Register {
         const redirect = this.route.snapshot.queryParamMap.get('redirect') || '/';
 
         //der User muss sich wieder einloggen
-        setTimeout(() => this.router.navigate(['/userlogin']), 1000);
+        setTimeout(() => this.router.navigate(['/userlogin'],{
+          queryParams: { redirect }
+        }), 1000);
       },
       error: () => {
         this.loading = false;

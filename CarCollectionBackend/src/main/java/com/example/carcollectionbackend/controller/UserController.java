@@ -10,7 +10,9 @@ import com.example.carcollectionbackend.security.JwtService;
 import com.example.carcollectionbackend.service.UserService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/users")
@@ -38,15 +40,27 @@ public class UserController {
   @PostMapping("/login")
   public LoginResponseDTO login(@RequestBody LoginDTO dto) {
 
+    //ruft Service, um zu überprüfen , ob mail und passw korrekt sind
     User user = service.login(dto.getEmail(), dto.getPassword());
-    String token = jwt.generateToken(user.getEmail());
 
-    return new LoginResponseDTO(
-      user.getId(),
-      user.getVorname(),
-      user.getEmail(),
-      token
-    );
+    //Générer token (si JwtService bug, on renvoie 500 avec message)
+    try {
+      String token = jwt.generateToken(user.getEmail());
+
+      return new LoginResponseDTO(
+        user.getId(),
+        user.getVorname(),
+        user.getEmail(),
+        token
+      );
+    } catch (Exception e) {
+      // Pour voir l'erreur exacte dans la console
+      e.printStackTrace();
+      throw new ResponseStatusException(
+        HttpStatus.INTERNAL_SERVER_ERROR,
+        "Token generation failed: " + e.getMessage()
+      );
+    }
   }
 }
 

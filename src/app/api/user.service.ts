@@ -2,11 +2,14 @@ import { Injectable } from '@angular/core';
 import {environment} from '../../environments/environment';
 import {HttpClient} from '@angular/common/http';
 
+//Die Angular-Servicen kümmern sich um HTTP-Anfragen / API-Anrüfe (überall wiederverwendbar)
+// Die verwendeten Routes hier gehören zum Backend (Controller) und NICHT die Routes von Angular
+
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  private api = environment.apiUrl + '/users';
+  private api = environment.apiUrl + '/users'; // la cest pour communiquer avec  le 'User'Controller
 
   constructor(private http: HttpClient) {}
 
@@ -14,6 +17,8 @@ export class UserService {
     return this.http.post(this.api + '/register', data);
   }
 
+  //Angular schickt eine HTTP-Anfrage zum Backend (HttpClient)
+  //http: //localhost:8080/api/users/login , { "email": "...", "password": "..." }
   login(data: any) {
     return this.http.post(this.api + '/login', data);
   }

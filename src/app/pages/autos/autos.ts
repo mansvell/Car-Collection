@@ -33,9 +33,6 @@ type Car = {
             <span class="text-xs font-semibold text-slate-500">Informationen</span>
           </div>
 
-          <h2 class="mt-4 text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-900 text-center">
-            Autos werden hier pro<span class="text-sky-600"> Marken </span> angezeigt
-          </h2>
           <p class="mt-4 text-slate-600 ">
             Klicken Sie auf ⭐ ,wenn Ihnen ein Model besonders gut gefallen hat
           </p>

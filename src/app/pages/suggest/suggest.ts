@@ -188,14 +188,14 @@ export class Suggest {
     this.error = null;
 
     if (!this.userService.isLoggedIn()) {
-      //eingeloggte User werden in #login verlegen und danach wieder nach #suggest
-      this.router.navigate(['/login'], { queryParams: { redirect: '/suggest' } });
+      //eingeloggte User werden in #userlogin verlegen und danach wieder nach #suggest
+      this.router.navigate(['/userlogin'], { queryParams: { redirect: '/suggest' } });
       return;
     }
 
     const userId = this.userService.getUserId()! ; // UserId holen nach dem Login
     if (userId === null) {
-      this.router.navigate(['/login'], { queryParams: { redirect: '/suggest' } });
+      this.router.navigate(['/userlogin'], { queryParams: { redirect: '/suggest' } });
       return;
     }
 
