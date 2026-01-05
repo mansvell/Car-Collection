@@ -128,11 +128,10 @@ export class UserLogin {
       email: this.email.trim(),
       password: this.password
     };
-    /**
-     * Appel backend: POST /api/users/login
-     * on weiterleiten les Eingaben du User a userService de Angular dank des INhalts von payload
-     */
+
+    //on weiterleiten les Eingaben du User a userService de Angular dank des Inhalts von payload
     this.userService.login(payload).subscribe({
+      //Appel backend: POST /api/users/login pour recevoir le token juste apres
       next: (res: any) => {
         // sécurité: vérifier que la réponse contient bien ce qu'on attend
         if (!res?.token || !res?.id) {
@@ -150,7 +149,6 @@ export class UserLogin {
         this.loading = false;
       },
       error: (err) => {
-        // ici on is.loginError = true;
         const status = err?.status;
         const msg =
           err?.error?.message ||

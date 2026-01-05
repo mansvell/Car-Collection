@@ -23,12 +23,15 @@ export class UserService {
     return this.http.post(this.api + '/login', data);
   }
 
+  //speichert das Token dann wird automatisch zu jeden Abfragen geschickt via
+  // auth.interceptor (Authorization: Bearer eyJhbGciOiJIUzI1NiIs...)
   saveToken(token: string) {
     localStorage.setItem('token', token);
   }
   saveUserId(id: number) {
     localStorage.setItem('userId', String(id));
   }
+
   getUserId(): number | null {
     const v = localStorage.getItem('userId');
     if (!v) return null;
