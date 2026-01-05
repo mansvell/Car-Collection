@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router';
+import {ActivatedRoute, Router, RouterLink} from '@angular/router';
 import { UserService } from '../../api/user.service';
 import { NgIf } from '@angular/common';
 
@@ -106,26 +106,32 @@ import { NgIf } from '@angular/common';
   `]
 })
 export class UserLogin {
-  username = '';
+  email = '';
   password = '';
   loginError = false;
 
   constructor(
     private userService: UserService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
+
 
   login() {
     this.loginError = false;
-
-    this.userService.login({
-      email: this.username,
-      password: this.password
-    }).subscribe({
+    /**
+     * Appel backend: POST /api/users/login
+     * le backend renvoie LoginResponseDTO:
+     * { id, vorname, email, token }
+     */
+    this.userService.login({ email: this.email, password: this.password }).subscribe({
       next: (res: any) => {
         this.userService.saveToken(res.token);
-        localStorage.setItem('userId', res.id.toString());
-        this.router.navigate(['/']);
+        this.userService.saveUserId(res.id);
+
+        //intelligente Weiterleitung: si on est venu ici depuis /suggest, on revient sur /suggest
+        const redirect = this.route.snapshot.queryParamMap.get('redirect') || '/';
+        this.router.navigate([redirect]);
       },
       error: () => {
         this.loginError = true;

@@ -22,11 +22,13 @@ export class UserService {
     localStorage.setItem('token', token);
   }
   saveUserId(id: number) {
-    localStorage.setItem('userId', id.toString());
+    localStorage.setItem('userId', String(id));
   }
   getUserId(): number | null {
     const v = localStorage.getItem('userId');
-    return v ? Number(v) : null;
+    if (!v) return null;
+    const n = Number(v);
+    return Number.isFinite(n) ? n : null;
   }
 
   getToken(): string | null {
@@ -34,7 +36,7 @@ export class UserService {
   }
 
   isLoggedIn(): boolean {
-    return !!this.getToken();
+    return !!this.getToken() && this.getUserId() !== null;
   }
 
   logout() {

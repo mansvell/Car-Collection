@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { UserService } from '../../api/user.service';
 import { NgIf } from '@angular/common';
 
@@ -148,11 +148,11 @@ export class Register {
     password2: ''
   };
 
-  loading = false;
+  loading = false; ///désactive le bouton pendant la requête
   error = '';
   success = false;
 
-  constructor(private api: UserService, private router: Router) {}
+  constructor(private api: UserService, private router: Router,private route: ActivatedRoute) {}
 
   regist() {
     this.error = '';
@@ -160,6 +160,10 @@ export class Register {
 
     if (this.form.password !== this.form.password2) {
       this.error = 'Die Passwörter stimmen nicht überein.';
+      return;
+    }
+    if (!this.form.vorname || !this.form.nachname || !this.form.email || !this.form.password) {
+      this.error = 'Bitte füllen Sie alle Pflichtfelder aus.';
       return;
     }
 
@@ -176,6 +180,10 @@ export class Register {
       next: () => {
         this.loading = false;
         this.success = true;
+        //si l'utilisateur venait de /suggest → redirect=/suggest sinon '/'
+        const redirect = this.route.snapshot.queryParamMap.get('redirect') || '/';
+
+        //der User muss sich wieder einloggen
         setTimeout(() => this.router.navigate(['/userlogin']), 1000);
       },
       error: () => {

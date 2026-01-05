@@ -4,6 +4,7 @@ import com.example.carcollectionbackend.Entities.Brand;
 import com.example.carcollectionbackend.Entities.Car;
 import com.example.carcollectionbackend.Entities.Suggestion;
 import com.example.carcollectionbackend.Entities.User;
+import com.example.carcollectionbackend.dto.SuggestionCreateDTO;
 import com.example.carcollectionbackend.repository.BrandRepository;
 import com.example.carcollectionbackend.repository.CarRepository;
 import com.example.carcollectionbackend.repository.SuggestionRepository;
@@ -23,11 +24,11 @@ public class SuggestionService {
   private final CarRepository carRepo;
   private final UserRepository userRepo;
 
-  public List<Suggestion> getPending() {
+  public List<Suggestion> getPending() { //ADMIN: récupérer toutes les suggestions "PENDING"
     return repo.findByStatus("PENDING");
   }
 
-  public Suggestion save(Suggestion s) {
+  public Suggestion savee(Suggestion s) {
     return repo.save(s);
   }
   public void updateStatus(Long id, String status) {
@@ -36,31 +37,22 @@ public class SuggestionService {
     repo.save(s);
   }
 
-  // suggestion proprement avec userId
-  public Suggestion createSuggestionWithUser(
-    Long userId,
-    String logo,
-    String model,
-    String brand,
-    Integer year,
-    String category,
-    Integer hp,
-    String description
-  ) {
-    User u = userRepo.findById(userId).orElseThrow();
+  //créer une suggestion à partir du DTO (qui contient userId)
+  public Suggestion createSuggestionWithUser(SuggestionCreateDTO dto) {
+    User u = userRepo.findById(dto.getUserId()).orElseThrow();
     Suggestion s = new Suggestion();
 
     s.setUser(u);
-    s.setLogo(logo);
-    s.setModel(model);
-    s.setBrand(brand);
-    s.setYear(year);
-    s.setCategory(category);
-    s.setHp(hp);
-    s.setDescription(description);
+    s.setLogo(dto.getLogo());
+    s.setModel(dto.getModel());
+    s.setBrand(dto.getBrand());
+    s.setYear(dto.getYear());
+    s.setCategory(dto.getCategory());
+    s.setHp(dto.getHp());
+    s.setDescription(dto.getDescription());
     s.setStatus("PENDING");
 
-    return repo.save(s);
+    return savee(s);
   }
 
   //Admin accepte : créer Brand + Car, puis status APPROVED
@@ -72,7 +64,7 @@ public class SuggestionService {
       throw new IllegalStateException("Suggestion is not PENDING.");
     }
 
-    Brand brand = brandRepo.findByNameIgnoreCase(s.getBrand())
+    Brand brand = brandRepo.findByNameIgnoreCase(s.getBrand()) //récupérer ou créer la Brand
       .orElseGet(() -> {
         Brand b = new Brand();
         b.setName(s.getBrand());
@@ -107,4 +99,5 @@ public class SuggestionService {
     s.setStatus("REJECTED");
     repo.save(s);
   }
+
 }

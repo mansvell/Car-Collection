@@ -1,6 +1,8 @@
 package com.example.carcollectionbackend.controller;
 
+import com.example.carcollectionbackend.Entities.Car;
 import com.example.carcollectionbackend.Entities.Suggestion;
+import com.example.carcollectionbackend.dto.SuggestionCreateDTO;
 import com.example.carcollectionbackend.dto.SuggestionDTO;
 import com.example.carcollectionbackend.mapper.EntityMapper;
 import com.example.carcollectionbackend.service.SuggestionService;
@@ -25,10 +27,23 @@ public class SuggestionController {
       .toList();
   }
 
+  //On reçoit un DTO qui contient userId (pas un objet User complet)
   @PostMapping
-  public SuggestionDTO createSuggestion(@RequestBody Suggestion s) {
-    Suggestion saved = service.save(s);
+  public SuggestionDTO createSuggestion(@RequestBody SuggestionCreateDTO dto) {
+    var saved = service.createSuggestionWithUser(dto);
     return EntityMapper.toSuggestionDTO(saved);
+  }
+
+  //ADMIN accepte
+  @PostMapping("/{id}/accept")
+  public Car accept(@PathVariable Long id) {
+    return service.acceptSuggestion(id);
+  }
+
+  //ADMIN refuse
+  @PostMapping("/{id}/reject")
+  public void reject(@PathVariable Long id) {
+    service.rejectSuggestion(id);
   }
 
   @PutMapping("/{id}/status/{status}")

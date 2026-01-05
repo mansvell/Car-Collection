@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgForOf, NgIf } from '@angular/common';
 import { SuggestionService } from '../../api/suggestion.service';
+import {Router} from '@angular/router';
+import {UserService} from '../../api/user.service';
 
 @Component({
   selector: 'app-suggest',
@@ -32,7 +34,7 @@ import { SuggestionService } from '../../api/suggestion.service';
 
       </div>
 
-      <form (ngSubmit)="submit()"
+      <form (submit)="$event.preventDefault(); submit()"
             class="mt-10 space-y-6 rounded-3xl bg-white/70 backdrop-blur-xl
                    ring-1 ring-slate-200/70 shadow-[0_20px_60px_-35px_rgba(2,6,23,0.35)]
                    p-6 sm:p-8">
@@ -114,21 +116,22 @@ import { SuggestionService } from '../../api/suggestion.service';
                            transition"></textarea>
         </div>
 
-        <!-- Submit -->
         <button type="submit"
+                [disabled]="loading"
                 class="w-full py-3.5 rounded-2xl font-extrabold tracking-wide text-white
                        bg-gradient-to-r from-sky-500 via-sky-600 to-red-500
                        shadow-lg shadow-sky-500/20
                        transition duration-200
                        hover:brightness-110 hover:-translate-y-0.5
-                       active:translate-y-0 active:scale-[0.99]">
-          Vorschlag senden
+                       active:translate-y-0 active:scale-[0.99]
+                       disabled:opacity-60 disabled:cursor-not-allowed">
+          {{ loading ? 'Senden...' : 'Vorschlag senden' }}
         </button>
 
         <!-- Success -->
         <div *ngIf="submitted"
              class="rounded-2xl bg-white/70 ring-1 ring-emerald-200/70 p-4 text-center animate-pop">
-          <div class="font-extrabold text-emerald-700">Ihr Vorschla wurde erfolgreich gesendet</div>
+          <div class="font-extrabold text-emerald-700">Ihr Vorschlag wurde erfolgreich gesendet</div>
           <div class="text-sm text-slate-600 mt-1">Danke! Wir werden ihn so schnell wie möglich behandeln</div>
         </div>
 
@@ -157,6 +160,8 @@ import { SuggestionService } from '../../api/suggestion.service';
   standalone: true
 })
 export class Suggest {
+
+  //wird dem User angezeigt, er kann erfüllen auch ohne offline
   form: any = {
     logo: '',
     modelName: '',
@@ -165,22 +170,86 @@ export class Suggest {
     hp: '',
     category: '',
     description: '',
-    userName: '',
-    userEmail: ''
   };
 
-  submitted = false;
+  submitted = false;  // zeigt die Erfolgsnachricht
+  loading = false;  //deaktiviert das Button et zeigt "Senden..."
+  error: string | null = null; //zeigt den fehler unter dem Formular
 
   categories = [
     'SUV', 'COUPE', 'LUXUSLIMOUSINE', 'CABRIOLET', 'SUPERCAR', 'HYPERCAR', 'CLASSIC', 'COLLECTION', 'SPORTCAR'
   ];
 
-  constructor(private suggestionService: SuggestionService) {}
+  constructor(private suggestionService: SuggestionService, private userService: UserService, private router: Router) {}
 
   submit() {
-    this.form.userId = Number(localStorage.getItem('userId'));
-    this.suggestionService.sendSuggestion(this.form).subscribe({
-      next: () => this.submitted = true
+    // Reset UI state nach jedem submit
+    this.submitted = false;
+    this.error = null;
+
+    if (!this.userService.isLoggedIn()) {
+      //eingeloggte User werden in #login verlegen und danach wieder nach #suggest
+      this.router.navigate(['/login'], { queryParams: { redirect: '/suggest' } });
+      return;
+    }
+
+    const userId = this.userService.getUserId()! ; // UserId holen nach dem Login
+    if (userId === null) {
+      this.router.navigate(['/login'], { queryParams: { redirect: '/suggest' } });
+      return;
+    }
+
+    /*Payload EXACT attendu par le backend (SuggestionCreateDTO)
+    * ich verlege dem Backend das Formular, das Formular benutzt modelName / brandName, und das Backend: model / brand
+     */
+    const payload = {
+      userId,
+      logo: (this.form.logo || '').trim(),
+      model: (this.form.modelName || '').trim(),
+      brand: (this.form.brandName || '').trim(),
+      year: Number(this.form.year),
+      hp: Number(this.form.hp),
+      category: this.form.category,
+      description: (this.form.description || '').trim()
+    };
+
+    // petites sécurités
+    if (!payload.logo || !payload.model || !payload.brand || !payload.category || !payload.description) {
+      this.error = "Bitte füllen Sie alle Pflichtfelder aus.";
+      return;
+    }
+    if (!Number.isFinite(payload.year) || payload.year <= 0) {
+      this.error = "Bitte geben Sie eine gültige Zahl für Preis ein.";
+      return;
+    }
+    if (!Number.isFinite(payload.hp) || payload.hp <= 0) {
+      this.error = "Bitte geben Sie eine gültige Zahl für HP ein.";
+      return;
+    }
+
+    //envois au BAckend
+    this.loading = true;
+
+    this.suggestionService.sendSuggestion(payload).subscribe({
+      next: () => {
+        this.submitted = true; // Succès: afficher le message
+
+        this.form = { // reset du form
+          logo: '',
+          modelName: '',
+          brandName: '',
+          year: '',
+          hp: '',
+          category: '',
+          description: '',
+        };
+      },
+      error: () => {
+        this.error = "Etwas ist beim Senden schiefgelaufen. Überprüfen Sie das Backend (CORS/DTO) und versuch nochmal";
+      },
+      complete: () => {
+        this.loading = false;
+      }
     });
   }
 }

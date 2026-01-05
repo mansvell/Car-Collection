@@ -17,4 +17,12 @@ export class SuggestionService {
   getPending() {
     return this.http.get(this.api + '/pending');
   }
+
+  // ADMIN: accepter une suggestion (crée une Car + update status APPROVED)
+  acceptSuggestion(id: number) {
+    return this.http.post(environment.apiUrl + `/suggestions/${id}/accept`, {});
+  }
+  rejectSuggestion(id: number) {
+    return this.http.post(environment.apiUrl + `/suggestions/${id}/reject`, {});
+  }
 }
