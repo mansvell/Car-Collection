@@ -62,14 +62,14 @@ import { NgIf } from '@angular/common';
                            shadow-lg shadow-sky-500/20 transition duration-200
                            hover:brightness-110 hover:-translate-y-0.5
                            active:translate-y-0 active:scale-[0.99]">
-              Sich einloggen
+              {{ loading? 'Haben Sie Geduld...' : 'sich einloggen'}}
             </button>
           </form>
 
           <div *ngIf="loginError"
                class="mt-5 rounded-2xl bg-white/70 ring-1 ring-red-200/70 p-4 text-center animate-shake">
-            <div class="font-extrabold text-red-600">Etwas ist schiefgelaufen</div>
-            <div class="text-sm text-slate-600 mt-1">{{ errorMsg || 'Bitte prüfen Sie Email & Passwort' }}</div>
+            <div class="font-extrabold text-red-600">Etwas ist schiefgelaufen!</div>
+            <div class="text-sm text-slate-600 mt-1">{{ errorMsg }}</div>
           </div>
 
           <div class="text-center text-slate-600 mt-8 text-sm">
@@ -149,6 +149,7 @@ export class UserLogin {
         this.loading = false;
       },
       error: (err) => {
+        this.loginError = true;
         const status = err?.status;
         const msg =
           err?.error?.message ||
@@ -156,7 +157,7 @@ export class UserLogin {
           err?.message ||
           'Unbekannter Fehler';
 
-        this.errorMsg = `Login fehlgeschlagen (HTTP ${status}): ${msg}`;
+        this.errorMsg = `Bitte prüfen Sie Ihre Email oder Passwort!`;
         this.loading = false;
       }
     });

@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
-import {RouterOutlet, RouterLink, RouterLinkActive} from '@angular/router';
+import {RouterOutlet, RouterLink, RouterLinkActive, Router} from '@angular/router';
+import {UserService} from './api/user.service';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,11 @@ export class App {
   protected readonly title = signal('CarCollectionFrontend');
   //Mobile menu
   menuOpen = signal(false);
+
+  constructor(
+    public userService: UserService, //public => utilisable dans app.html
+    private router: Router
+  ) {}
 
   toggleMenu() {
     this.menuOpen.update(v => !v);
