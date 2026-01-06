@@ -22,7 +22,7 @@ export const routes: Routes = [
     children: [
       { path: '', component: AdminLogin },
       { path: 'admindashb', component: AdminDashboard,
-        canActivate: [adminGuard] //Schutz von Admindashb
+        canActivate: [adminGuard] //Schütze das Admindashboard ,wenn jd die Route 'http...admin/admindashb' einfach in Suche eingibt
       }
     ]
   },

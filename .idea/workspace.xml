@@ -6,19 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="00ce81b3-42dc-4632-ad3a-1a0e80dd3104" name="Changes" comment="api">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/dto/LoginResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/dto/LoginResponseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/security/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/security/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/src/main/resources/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/target/classes/data.sqlite" beforeDir="false" afterPath="$PROJECT_DIR$/CarCollectionBackend/target/classes/data.sqlite" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/api/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/api/user.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/app.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarCollectionBackend/src/main/java/com/example/carcollectionbackend/controller/DevController.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/app.routes.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/app.routes.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-dashboard/admin-dashboard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/admin/admin-dashboard/admin-dashboard.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/admin/admin-login/admin-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/admin/admin-login/admin-login.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/home/home.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/home/home.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/pages/logout/logout.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/logout/logout.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/pages/user-login/user-login.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/pages/user-login/user-login.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +110,7 @@
       <workItem from="1764692214764" duration="68098000" />
       <workItem from="1765826390658" duration="4630000" />
       <workItem from="1766394440034" duration="15172000" />
-      <workItem from="1766414975809" duration="126353000" />
+      <workItem from="1766414975809" duration="128295000" />
     </task>
     <task id="LOCAL-00001" summary="Struktur projekt">
       <option name="closed" value="true" />

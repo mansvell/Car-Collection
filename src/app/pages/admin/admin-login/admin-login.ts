@@ -41,7 +41,7 @@ import {NgIf} from '@angular/common';
           <form (ngSubmit)="login()" class="mt-8 space-y-5">
 
             <div class="space-y-2">
-              <label class="text-slate-700 font-extrabold block">Admin Benutzername</label>
+              <label class="text-slate-700 font-extrabold block">Admin Mail</label>
               <input [(ngModel)]="email" name="email" required
                 class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                        placeholder:text-slate-400 shadow-sm transition
@@ -50,7 +50,7 @@ import {NgIf} from '@angular/common';
             </div>
 
             <div class="space-y-2">
-              <label class="text-slate-700 font-extrabold block">Passwort</label>
+              <label class="text-slate-700 font-extrabold block">Password</label>
               <input type="password"  [(ngModel)]="password" name="password"  required
                      class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                        placeholder:text-slate-400 shadow-sm transition required
@@ -96,8 +96,6 @@ export class AdminLogin {
   ) {}
 
   login() {
-    console.log('ADMIN LOGIN SUBMIT', this.email, this.password);
-
     this.userService.login({
       email: this.email,
       password: this.password

@@ -95,8 +95,8 @@ export class Logout {
     this.loggedOut = true;
 
     setTimeout(() => {
-      this.router.navigate([wasAdmin ? '/admin' : '/']);      //Redirection après 1sec
-    }, 1000);
+      this.router.navigate([wasAdmin ? '/admin' : '/']); //redirige après 10sec si aucun signe apres le logout
+    }, 10000);
   }
 
   cancel() {
