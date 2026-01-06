@@ -51,6 +51,7 @@ public class UserController {
         user.getId(),
         user.getVorname(),
         user.getEmail(),
+        user.getRole(),
         token
       );
     } catch (Exception e) {

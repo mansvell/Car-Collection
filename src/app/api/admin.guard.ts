@@ -1,0 +1,20 @@
+import { inject } from '@angular/core';
+import { CanActivateFn, Router } from '@angular/router';
+import { UserService } from './user.service';
+
+export const adminGuard: CanActivateFn = () => {
+  const userService = inject(UserService);
+  const router = inject(Router);
+
+  if (!userService.isLoggedIn()) {
+    router.navigate(['/admin']);
+    return false;
+  }
+
+  if (!userService.isAdmin()) {
+    router.navigate(['/admin']);
+    return false;
+  }
+
+  return true;
+};

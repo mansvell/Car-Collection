@@ -131,10 +131,11 @@ export class UserLogin {
 
     //on weiterleiten les Eingaben du User a userService de Angular dank des Inhalts von payload
     this.userService.login(payload).subscribe({
+
       //Appel backend: POST /api/users/login pour recevoir le token juste apres
       next: (res: any) => {
-        // sécurité: vérifier que la réponse contient bien ce qu'on attend
-        if (!res?.token || !res?.id) {
+
+        if (!res?.token || !res?.id) {  //sécurité: vérifier que la réponse contient bien ce qu'on attend
           this.loginError = true;
           this.errorMsg = 'Login-Response ist ungültig (token/id fehlt).';
           this.loading = false;
@@ -142,6 +143,7 @@ export class UserLogin {
         }
         this.userService.saveToken(res.token);
         this.userService.saveUserId(res.id);
+        this.userService.saveRole(res.role);//
 
         //intelligente Weiterleitung: si on est venu ici depuis /suggest, on revient sur /suggest
         const redirect = this.route.snapshot.queryParamMap.get('redirect') || '/';

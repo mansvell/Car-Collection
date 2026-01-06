@@ -9,5 +9,6 @@ public class LoginResponseDTO {
   private Long id;
   private String vorname;
   private String email;
+  private String role; //für admin
   private String token;
 }

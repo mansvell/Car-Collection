@@ -41,7 +41,13 @@ type Brand = {
           </p>
         </div>
 
-        <div
+        <!-- Loading state -->
+        <div *ngIf="loading"
+             class="mt-9 rounded-2xl bg-white/60 backdrop-blur ring-1 ring-slate-200/70 p-6 text-center shadow-sm">
+          <div class="text-sm font-bold text-slate-700">Lade Brands...</div>
+        </div>
+
+        <div *ngIf="!loading && brands.length > 0"
           class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 transition"
           [class.blur-sm]="selectedBrand"
           [class.opacity-60]="selectedBrand">
@@ -61,11 +67,6 @@ type Brand = {
           </div>
         </div>
 
-        <!--Empty state-->
-        <div *ngIf="brands.length === 0"
-             class="mt-10 rounded-2xl bg-white/60 backdrop-blur ring-1 ring-slate-200/70 p-6 text-center shadow-sm">
-          <div class="text-sm font-bold text-slate-700">Noch keine Brands gefunden...</div>
-        </div>
       </section>
 
 
@@ -167,6 +168,9 @@ export class Home {
 
   selectedBrand: Brand | null = null;
 
+  loading = false;     // true pendant la requête
+  loadedOnce = false;  // devient true après la 1ère réponse (success ou error)
+
   constructor(
     private router: Router,
     private brandService: BrandService
@@ -174,22 +178,23 @@ export class Home {
 
   ngOnInit(): void {
     this.loadBrands();
-
-    this.router.events
-      .pipe(filter(e => e instanceof NavigationEnd))
-      .subscribe(() => {
-        if (this.router.url === '/' || this.router.url === '') {
-          this.loadBrands();
-        }
-      });
   }
 
-  private loadBrands() {
+  private loadBrands(): void {
+    this.loading = true;
+    this.loadedOnce = false;
+
     this.brandService.getAll().subscribe({
-      next: (data: Brand[]) => this.brands = data,
+      next: (data: Brand[]) => {
+        this.brands = Array.isArray(data) ? data : [];
+        this.loading = false;
+        this.loadedOnce = true;
+      },
       error: (err) => {
         console.error('GET /brands failed', err);
         this.brands = [];
+        this.loading = false;
+        this.loadedOnce = true;
       }
     });
   }

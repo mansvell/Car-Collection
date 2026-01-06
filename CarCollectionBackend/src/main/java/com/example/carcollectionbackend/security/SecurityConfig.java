@@ -15,10 +15,10 @@ public class SecurityConfig {
       .csrf(csrf -> csrf.disable())
       .cors(Customizer.withDefaults())
       .authorizeHttpRequests(auth -> auth
-        // ✅ très important pour le preflight
+        //très important pour le preflight
         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-        // ✅ login/register doivent être accessibles sans token
+        //login/register doivent être accessibles sans token
         .requestMatchers("/api/users/**").permitAll()
 
         // le reste (à adapter plus tard)

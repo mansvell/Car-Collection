@@ -49,6 +49,20 @@ export class UserService {
 
   logout() {
     localStorage.removeItem('token');
-    localStorage.removeItem('userId');//Angular peut maintenant vérifier si l’utilisateur est connecté
+    localStorage.removeItem('userId'); //Benutzer
+    localStorage.removeItem('role');  //admin
+  }
+
+  //Admin
+  saveRole(role: string) {
+    localStorage.setItem('role', role);
+  }
+
+  getRole(): string | null {
+    return localStorage.getItem('role');
+  }
+
+  isAdmin(): boolean {
+    return this.getRole() === 'ADMIN';
   }
 }

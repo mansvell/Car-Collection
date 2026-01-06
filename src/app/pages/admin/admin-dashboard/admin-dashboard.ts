@@ -31,13 +31,13 @@ import { RouterLink } from '@angular/router';
           </div>
 
           <div >
-            <a routerLink="/admin/logout"
+            <a routerLink="/logout"
                class="inline-flex items-center gap-2 rounded-2xl px-2 py-2  ring-1 ring-slate-200/70
-                      hover:bg-red-300 ">
+                      hover:bg-slate-200 bg-red-300">
               <span class="grid h-9 w-9 place-items-center rounded-xl bg-red-500/10 ring-1 ring-red-200/60">
                 🔒
               </span>
-              <span class="font-extrabold  hover:text-white "> Sich Aussloggen</span>
+              <span class="font-extrabold  hover:text-red-800 "> Abmelden</span>
             </a>
           </div>
         </div>

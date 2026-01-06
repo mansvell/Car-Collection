@@ -8,6 +8,7 @@ import {Suggest} from './pages/suggest/suggest';
 import {AdminLogin} from './pages/admin/admin-login/admin-login';
 import {Register} from './pages/register/register';
 import {Logout} from './pages/logout/logout';
+import {adminGuard} from './api/admin.guard';
 
 export const routes: Routes = [
   { path:'' , component:Home},
@@ -20,7 +21,9 @@ export const routes: Routes = [
     path: 'admin',  //gleich wie admin/cars/adminentschd oder admin/admindashb
     children: [
       { path: '', component: AdminLogin },
-      { path: 'admindashb', component: AdminDashboard }
+      { path: 'admindashb', component: AdminDashboard,
+        canActivate: [adminGuard] //Schutz von Admindashb
+      }
     ]
   },
   { path: '**', redirectTo: '' }// falls Route unbekannt ist → home

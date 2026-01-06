@@ -28,6 +28,7 @@ com\example\carcollectionbackend\Entities\User.class
 com\example\carcollectionbackend\service\FavoriteService.class
 com\example\carcollectionbackend\repository\BrandRepository.class
 com\example\carcollectionbackend\service\CarService.class
+com\example\carcollectionbackend\controller\DevController.class
 com\example\carcollectionbackend\security\JwtService.class
 com\example\carcollectionbackend\controller\UserController.class
 com\example\carcollectionbackend\dto\SuggestionCreateDTO.class

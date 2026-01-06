@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import {Router} from '@angular/router';
+import {UserService} from '../../../api/user.service';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-admin-login',
   standalone: true,
-  imports: [FormsModule, RouterLink],
+  imports: [FormsModule, NgIf],
   template: `
     <div class=" flex items-center justify-center px-4 bg-gradient-to-b via-slate-500 to-slate-10">
       <div class="w-full max-w-md animate-page-enter">
@@ -36,27 +38,27 @@ import { RouterLink } from '@angular/router';
             </p>
           </div>
 
-          <form class="mt-8 space-y-5">
+          <form (ngSubmit)="login()" class="mt-8 space-y-5">
 
             <div class="space-y-2">
               <label class="text-slate-700 font-extrabold block">Admin Benutzername</label>
-              <input
+              <input [(ngModel)]="email" name="email" required
                 class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                        placeholder:text-slate-400 shadow-sm transition
                        focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:ring-offset-2 focus:ring-offset-white"
-                placeholder="admin" />
+                />
             </div>
 
             <div class="space-y-2">
               <label class="text-slate-700 font-extrabold block">Passwort</label>
-              <input type="password"
+              <input type="password"  [(ngModel)]="password" name="password"  required
                      class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
-                       placeholder:text-slate-400 shadow-sm transition
+                       placeholder:text-slate-400 shadow-sm transition required
                        focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:ring-offset-2 focus:ring-offset-white"
-                     placeholder="••••••••"/>
+                     />
             </div>
 
-            <button routerLink="/admin/admindashb" type="button"
+            <button  type="submit"
                     class="w-full py-3.5 rounded-2xl font-extrabold tracking-wide text-white
                            bg-gradient-to-r from-sky-500 via-sky-600 to-red-500
                            shadow-lg shadow-sky-500/20 transition duration-200
@@ -64,6 +66,9 @@ import { RouterLink } from '@angular/router';
                            active:translate-y-0 active:scale-[0.99]">
               Einloggen
             </button>
+            <div *ngIf="error" class="text-red-600">
+              {{error}}
+            </div>
           </form>
 
         </div>
@@ -80,4 +85,42 @@ import { RouterLink } from '@angular/router';
     }
   `]
 })
-export class AdminLogin {}
+export class AdminLogin {
+  email = '';
+  password = '';
+  error = '';
+
+  constructor(
+    private userService: UserService,
+    private router: Router
+  ) {}
+
+  login() {
+    console.log('ADMIN LOGIN SUBMIT', this.email, this.password);
+
+    this.userService.login({
+      email: this.email,
+      password: this.password
+    }).subscribe({
+      next: (res: any) => {
+        if (!res?.token || !res?.id) {
+          this.error = 'Login-Response ungültig (token/id fehlt).';
+          return;
+        }
+        if (res?.role !== 'ADMIN') {
+          this.error = 'Zugriff verweigert: Kein Admin.';
+          return;
+        }
+
+        this.userService.saveToken(res.token);
+        this.userService.saveUserId(res.id);
+        this.userService.saveRole(res.role);
+
+        this.router.navigate(['/admin/admindashb']);
+      },
+      error: () => {
+        this.error = 'Admin Login fehlgeschlagen';
+      }
+    });
+  }
+}

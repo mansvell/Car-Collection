@@ -3,6 +3,7 @@ import {Router, RouterLink} from '@angular/router';
 import {UserService} from '../../api/user.service';
 import {NgIf} from '@angular/common';
 
+//Abmeldung für Admin und User
 @Component({
   selector: 'app-logout',
   standalone: true,
@@ -21,7 +22,7 @@ import {NgIf} from '@angular/common';
             <span class="text-xs font-bold tracking-widest text-slate-600 uppercase"> Abmelden</span>
           </div>
 
-          <!-- ÉTAPE 1 : CONFIRMATION -->
+          <!--Bestätigung für Verbindung -->
           <ng-container *ngIf="!loggedOut">
 
             <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 mb-4">
@@ -45,7 +46,7 @@ import {NgIf} from '@angular/common';
             </div>
           </ng-container>
 
-          <!-- ÉTAPE 2 : CONFIRMATION DE DÉCONNEXION -->
+          <!--Bestätigung für Ausloggen-->
           <ng-container *ngIf="loggedOut">
 
             <h1 class="text-2xl font-extrabold tracking-tight text-slate-900 mb-4">
@@ -82,14 +83,27 @@ export class Logout {
   constructor(
     private userService: UserService,
     private router: Router
-  ) {}
+  ) {
+    if (!this.userService.isLoggedIn()) {
+      this.router.navigate(['/']);
+    } //verhindert , /logout zu öffnen, wenn nicht eingeloggt
+  }
 
   confirmLogout() {
+    const wasAdmin = this.userService.isAdmin(); //Role vor dem Ausloggen kennen
     this.userService.logout();
     this.loggedOut = true;
+
+    setTimeout(() => {
+      this.router.navigate([wasAdmin ? '/admin' : '/']);      //Redirection après 1sec
+    }, 1000);
   }
 
   cancel() {
-    this.router.navigate(['/']);
+    if (this.userService.isAdmin()) { // wenn Admin online ist, zurück zu dashboard son Home
+      this.router.navigate(['/admin/admindashb']);
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 }
