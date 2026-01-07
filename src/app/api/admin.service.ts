@@ -25,6 +25,13 @@ export class AdminService {
     return this.http.get<any[]>(`${this.base}/suggestions/pending`);
   }
 
+  acceptSuggestion(id: number) {
+    return this.http.post(`${this.base}/suggestions/${id}/accept`, {});
+  }
+
+  rejectSuggestion(id: number) {
+    return this.http.post(`${this.base}/suggestions/${id}/reject`, {});
+  }
   getUserCount() {
     return this.http.get<number>(`${this.base}/admin/dashboard/users/count`);
   }

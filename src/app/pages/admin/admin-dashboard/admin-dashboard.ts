@@ -199,14 +199,14 @@ import {AdminService} from '../../../api/admin.service';
                 </div>
 
                 <div class="mt-5 flex flex-col sm:flex-row gap-3">
-                  <button type="button"
+                  <button type="button" (click)="accept(s)" [disabled]="busyIds.has(s.sid)"
                           class="flex-1 rounded-2xl py-3 font-extrabold text-white
                                  bg-gradient-to-r from-emerald-500 to-sky-600
                                  hover:brightness-110 hover:-translate-y-0.5">
                     Zusagen
                   </button>
 
-                  <button type="button"
+                  <button type="button" (click)="reject(s)" [disabled]="busyIds.has(s.sid)"
                           class="flex-1 rounded-2xl py-3 font-extrabold text-white
                                  bg-gradient-to-r from-red-500 to-red-600
                                  shadow-lg shadow-red-500/10
@@ -278,6 +278,7 @@ export class AdminDashboard {
 
 
   pendingSuggestions: any[] = [];
+  busyIds = new Set<number>();   // empêcher double-clic
 
   constructor(private adminApi: AdminService) {}
 
@@ -396,6 +397,57 @@ export class AdminDashboard {
     });
   }
 
+
+  accept(s: any) {
+    const id = Number(s?.sid);
+    if (!id || this.busyIds.has(id)) return;
+
+    this.busyIds.add(id);
+    this.error = '';
+
+    this.adminApi.acceptSuggestion(id).subscribe({
+      next: () => {
+        // 1) retirer de la liste UI
+        this.pendingSuggestions = this.pendingSuggestions.filter(x => x.sid !== id);
+
+        // 2) refresh rapide des compteurs + KPI
+        this.refreshAfterDecision();
+
+        this.busyIds.delete(id);
+      },
+      error: () => {
+        this.error = 'Zusagen fehlgeschlagen.';
+        this.busyIds.delete(id);
+      }
+    });
+  }
+
+  reject(s: any) {
+    const id = Number(s?.sid);
+    if (!id || this.busyIds.has(id)) return;
+
+    this.busyIds.add(id);
+    this.error = '';
+
+    this.adminApi.rejectSuggestion(id).subscribe({
+      next: () => {
+        this.pendingSuggestions = this.pendingSuggestions.filter(x => x.sid !== id);
+        this.refreshAfterDecision();
+        this.busyIds.delete(id);
+      },
+      error: () => {
+        this.error = 'Absagen fehlgeschlagen.';
+        this.busyIds.delete(id);
+      }
+    });
+  }
+  private refreshAfterDecision() {
+    // KPI + liste pending (optionnel)
+    this.refreshKpis();
+
+    // compteurs users/approved/rejected (ta méthode existante)
+    this.loadCounts();
+  }
 
   @HostListener('window:scroll')
   onScroll() {
