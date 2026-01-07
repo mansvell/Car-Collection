@@ -75,7 +75,7 @@ import {AdminService} from '../../../api/admin.service';
         <div class="mt-10 grid grid-cols-1 lg:grid-cols-3 gap-4">
           <div class="lg:col-span-2 rounded-3xl bg-white/70 backdrop-blur-xl ring-1 ring-slate-200/70
                       shadow p-6 sm:p-7">
-            <div class="flex items-start justify-between gap-4">
+            <div class="flex items-start lg:justify-between gap-4">
               <div>
                 <div class="text-xs font-bold  text-slate-500 uppercase">
                   Schneller Überblick
@@ -85,10 +85,10 @@ import {AdminService} from '../../../api/admin.service';
                 </h2>
               </div>
 
-              <div class="hidden sm:flex items-center gap-2 rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-3 py-2">
+              <div class="sm:flex items-center gap-2 rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-3 py-2">
                 <span class="text-slate-500 text-xs font-bold">Status</span>
                 <span class="h-2 w-2 rounded-full bg-emerald-500"></span>
-                <span class="text-slate-700 text-xs font-extrabold">Memories</span>
+                <span class="text-slate-700 text-xs font-extrabold">Statistiken</span>
               </div>
             </div>
 
@@ -271,8 +271,11 @@ export class AdminDashboard {
 
   topCategoryText = '-';
   mostLikedCarText = '-';
-  approvedSuggestions= 1;
-  rejectedSuggestions = 0;
+
+  totalUsers = 100;
+  approvedSuggestions = 100;
+  rejectedSuggestions = 100;
+
 
   pendingSuggestions: any[] = [];
 
@@ -281,6 +284,7 @@ export class AdminDashboard {
   ngOnInit(): void {
     this.refreshKpis();
     this.loadAnalytics();
+    this.loadCounts();
   }
 
   refreshKpis() {
@@ -293,7 +297,7 @@ export class AdminDashboard {
         const totalCars = Array.isArray(cars) ? cars.length : 0;
         this.stats[0].value = String(totalCars);
 
-        //on prend le dernier item de la liste (si triée)
+        //on prend le dernier item de la liste
         const lastCar = totalCars > 0 ? cars[cars.length - 1] : null;
         this.overview.lastCar = lastCar?.model ?? '-';
 
@@ -363,6 +367,35 @@ export class AdminDashboard {
       }
     });
   }
+
+  private loadCounts() {
+    this.error ='';
+    // Benutzer (App)
+    this.adminApi.getUserCount().subscribe({
+      next: (n) => {
+        this.totalUsers = n;
+        this.stats[3].value = String(n);
+      }
+    });
+
+    // Zugesagte
+    this.adminApi.getApprovedSuggestionsCount().subscribe({
+      next: (n) => {
+        this.approvedSuggestions = n;
+      },
+      error: () =>  {
+        this.error='sfdsfdfsdf';
+      }
+    });
+
+    // Abgesagte
+    this.adminApi.getRejectedSuggestionsCount().subscribe({
+      next: (n) => {
+        this.rejectedSuggestions = n;
+      }
+    });
+  }
+
 
   @HostListener('window:scroll')
   onScroll() {

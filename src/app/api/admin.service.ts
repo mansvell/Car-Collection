@@ -25,13 +25,18 @@ export class AdminService {
     return this.http.get<any[]>(`${this.base}/suggestions/pending`);
   }
 
-  acceptSuggestion(id: number) {
-    return this.http.post(`${this.base}/suggestions/${id}/accept`, {});
+  getUserCount() {
+    return this.http.get<number>(`${this.base}/admin/dashboard/users/count`);
   }
 
-  rejectSuggestion(id: number) {
-    return this.http.post(`${this.base}/suggestions/${id}/reject`, {});
+  getApprovedSuggestionsCount() {
+    return this.http.get<number>(`${this.base}/admin/dashboard/suggestions/approved/count`);
   }
+
+  getRejectedSuggestionsCount() {
+    return this.http.get<number>(`${this.base}/admin/dashboard/suggestions/rejected/count`);
+  }
+
 
   getDashboardStats() {
     return this.http.get<any>(`${this.base}/admin/dashboard/stats`);

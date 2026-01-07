@@ -2,7 +2,6 @@ package com.example.carcollectionbackend.controller;
 
 import com.example.carcollectionbackend.Entities.Car;
 import com.example.carcollectionbackend.dto.AdminStatsDTO;
-import com.example.carcollectionbackend.dto.CarDTO;
 import com.example.carcollectionbackend.dto.MostLikedCarDTO;
 import com.example.carcollectionbackend.dto.MostLikedCategoryDTO;
 import com.example.carcollectionbackend.mapper.EntityMapper;
@@ -82,6 +81,20 @@ public class AdminDashboardController {
       category != null ? category : "-",
       likes != null ? likes : 0
     );
+  }
+  @GetMapping("/users/count")
+  public long countAllUsers() {
+    return userRepo.count();
+  }
+
+  @GetMapping("/suggestions/approved/count")
+  public long countApprovedSuggestions() {
+    return suggestionRepo.countByStatus("APPROVED");
+  }
+
+  @GetMapping("/suggestions/rejected/count")
+  public long countRejectedSuggestions() {
+    return suggestionRepo.countByStatus("REJECTED");
   }
 
 }
