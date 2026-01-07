@@ -148,11 +148,11 @@ import {AdminService} from '../../../api/admin.service';
             <div class="grid grid-cols-1 md:grid-cols-5 gap-1">
 
               <div class="md:col-span-2 relative bg-slate-100/60">
-                <img [src]="s.logo" [alt]="s.modelName"
+                <img [src]="s.logo" [alt]="s.model"
                      class="h-56 md:h-full w-full object-cover" />
                 <div class="absolute bottom-4 left-4 right-4">
                   <div class="text-xs font-bold  text-white/80 uppercase">Preview</div>
-                  <div class="text-sm font-extrabold text-white">{{ s.brandName }} — {{ s.modelName }}</div>
+                  <div class="text-sm font-extrabold text-white">{{ s.brand }} — {{ s.model }}</div>
                 </div>
               </div>
 
@@ -163,7 +163,7 @@ import {AdminService} from '../../../api/admin.service';
                       Vorschlag #{{ i + 1 }}
                     </div>
                     <div class="mt-2 text-xl font-extrabold text-slate-900">
-                      {{ s.brandName }} <span class="text-red-500">•</span> {{ s.modelName }}
+                      {{ s.brand }} <span class="text-red-500">•</span> {{ s.model }}
                     </div>
                   </div>
 
@@ -286,6 +286,7 @@ export class AdminDashboard {
     this.refreshKpis();
     this.loadAnalytics();
     this.loadCounts();
+    this.loadPendingSuggestions();
   }
 
   refreshKpis() {
@@ -448,6 +449,21 @@ export class AdminDashboard {
     // compteurs users/approved/rejected (ta méthode existante)
     this.loadCounts();
   }
+
+  private loadPendingSuggestions() {
+    this.adminApi.getPendingSuggestions().subscribe({
+      next: (pending) => {
+        console.log('PENDING FROM API:', pending);
+        this.pendingSuggestions = pending ?? [];
+      },
+      error: (err) => {
+        console.error('PENDING ERROR:', err);
+        this.error = 'Pending suggestions konnten nicht geladen werden.';
+        this.pendingSuggestions = [];
+      }
+    });
+  }
+
 
   @HostListener('window:scroll')
   onScroll() {
