@@ -8,5 +8,7 @@ import java.util.List;
 
 public interface SuggestionRepository extends JpaRepository<Suggestion, Long> {
   List<Suggestion> findByStatus(String status);
+
+  long countByStatus(String status);//(PENDING / APPROVED / REJECTED)
 }
 

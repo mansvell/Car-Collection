@@ -1,6 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import {AdminService} from '../../../api/admin.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -9,7 +10,12 @@ import { RouterLink } from '@angular/router';
   template: `
     <div class="min-h-screen bg-gradient-to-b via-slate-500 to-slate-10">
 
-      <section class="pt-5 pb-20 px-5 sm:px-6 max-w-8xl mx-auto animate-page-enter">
+      <section class="pt-2 pb-20 px-5 sm:px-6 max-w-8xl mx-auto animate-page-enter">
+
+        <div *ngIf="error" class="mt-1 mb-4 rounded-2xl bg-white/70 ring-1 ring-red-200/70 p-4">
+          <div class="font-extrabold text-red-600">Fehler</div>
+          <div class="text-sm text-slate-600 mt-1">{{ error }}</div>
+        </div>
 
         <div class="flex items-start justify-between gap-4">
           <div>
@@ -49,8 +55,8 @@ import { RouterLink } from '@angular/router';
                       shadow-[0_20px_55px_-40px_rgba(2,6,23,0.35)]
                       p-5 sm:p-6 hover:-translate-y-0.5 transition">
             <div class="flex items-center justify-between">
-              <div class="grid h-12 w-12 place-items-center rounded-2xl bg-sky-500/10 ring-1 ring-sky-200/70">
-                <span class="text-2xl">{{ stat.icon }}</span>
+              <div class="grid h-12 w-12 place-items-center  rounded-2xl bg-sky-500/10 ring-1 ring-sky-200/70">
+                <span class="text-2xl ">{{ stat.icon }}</span>
               </div>
               <div class="text-xs font-bold tracking-widest text-slate-500 uppercase">
                 Live
@@ -99,25 +105,21 @@ import { RouterLink } from '@angular/router';
               </div>
 
               <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
-                <p class=" font-bold text-slate-500">Vorschläge in Warteschlange : </p>
-                <p class="mt-1 font-extrabold text-slate-900">
-                  {{ overview.pendingSuggestions }}
-                  <span class="text-red-500 font-black">•</span>
-                  <span class="text-sky-700"> noch offen</span>
-                </p>
+                <p class=" font-bold text-slate-500">Beliebteste Kategorie :  </p>
+                <p class="mt-1 font-extrabold text-slate-900">{{ topCategoryText }}  </p>
               </div>
 
               <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
-                <p class=" font-bold text-slate-500">Letzte Verbindung als Admin: </p>
-                <p class="mt-1 font-extrabold text-slate-900">{{ overview.lastAdminLogin }}</p>
+                <p class=" font-bold text-slate-500">Beliebtes Auto : </p>
+                <p class="mt-1 font-extrabold text-slate-900"> {{ mostLikedCarText }}</p>
               </div>
               <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
                 <p class=" font-bold text-slate-500">Abgesagte Vorschläge</p>
-                <p class="mt-1 font-extrabold text-slate-900"> 2</p>
+                <p class="mt-1 font-extrabold text-slate-900"> {{ rejectedSuggestions }}</p>
               </div>
               <div class="rounded-2xl bg-white/60 ring-4 ring-blue-300 p-4">
                 <p class=" font-bold text-slate-500">Zugesagte Vorschläge :</p>
-                <p class="mt-1 font-extrabold text-slate-900">2</p>
+                <p class="mt-1 font-extrabold text-slate-900">{{ approvedSuggestions }}</p>
               </div>
 
             </div>
@@ -245,60 +247,122 @@ import { RouterLink } from '@angular/router';
 })
 export class AdminDashboard {
 
+  // --- UI states ---
+  loadingKpis = false;
+  error = '';
+
   scrollProgress = 0;
   revealEnabled = false;
 
+
   stats = [
-    { label: 'Gesamte Autos', value: '28', icon: '🚗' },
-    { label: 'Gesamte Marken', value: '8', icon: '🏷️' },
-    { label: 'Vorschläge Pending', value: '3', icon: '⭐' },
-    { label: 'Benutzer (App)', value: '126', icon: '👥' },
+    { label: 'Gesamte Autos', value: '00', icon: '🏎️' },
+    { label: 'Gesamte Marken', value: '00', icon: '🏷️' },
+    { label: 'Vorschläge Pending', value: '00', icon: '💡' },
+    { label: 'Benutzer (App)', value: '00', icon: '👥' },
     { label: 'Admin Sessions', value: '1', icon: '🛡️' }
   ];
 
   overview = {
-    lastCar: 'Ferrari F8 Tributo',
+    lastCar: '_',
     pendingSuggestions: 3,
-    lastAdminLogin: 'vor 2 Stunden',
-    brandName: 'VW'
+    brandName: '_',
   };
 
-  // For the small queue bar
-  get queueFill(): number {
-    const max = 10; // purely UI scaling
-    return Math.min(100, (this.overview.pendingSuggestions / max) * 100);
+  topCategoryText = '-';
+  mostLikedCarText = '-';
+  approvedSuggestions= 1;
+  rejectedSuggestions = 0;
+
+  pendingSuggestions: any[] = [];
+
+  constructor(private adminApi: AdminService) {}
+
+  ngOnInit(): void {
+    this.refreshKpis();
+    this.loadAnalytics();
   }
 
-  // Mock pending suggestions (later connect to backend)
-  pendingSuggestions = [
-    {
-      logo: 'https://th.bing.com/th/id/R.6d59b322982eeee85f0e53118d61d97d?rik=PQ4fPRgAbsG1%2bg&riu=http%3a%2f%2fwww.hdcarwallpapers.com%2fwalls%2f2016_bmw_m2_coupe-wide.jpg&ehk=HyFhDaBe0NheJdPM5P2SRyYV1ueHrF4li70l6VLheIY%3d&risl=&pid=ImgRaw&r=0',
-      modelName: 'M4 Competition',
-      brandName: 'BMW',
-      year: 2024,
-      hp: 510,
-      category: 'SPORTCAR',
-      description: 'Sehr sportlich, ikonisches Design, perfekt für die Collection. Bitte hinzufügen.'
-    },
-    {
-      logo: 'images/cars/demo2.jpg',
-      modelName: 'G63 AMG',
-      brandName: 'Mercedes',
-      year: 2025,
-      hp: 585,
-      category: 'SUV',
-      description: 'Luxury SUV Klassiker. Diese Variante sollte unbedingt in der Collection sein.'
-    },
-    {
-      logo: 'images/cars/demo3.jpg',
-      modelName: 'SF90 Stradale',
-      brandName: 'Ferrari',
-      year: 2023,
-      hp: 1000,
-      category: 'SUPERCAR',
-      description: 'Hybrid-Supercar mit beeindruckender Leistung. Sehr gefragt bei Usern.'
-    }
-  ];
+  refreshKpis() {
+    this.error = '';
+    this.loadingKpis = true;
+
+    this.adminApi.getCars().subscribe({
+      next: (cars) => {
+
+        const totalCars = Array.isArray(cars) ? cars.length : 0;
+        this.stats[0].value = String(totalCars);
+
+        //on prend le dernier item de la liste (si triée)
+        const lastCar = totalCars > 0 ? cars[cars.length - 1] : null;
+        this.overview.lastCar = lastCar?.model ?? '-';
+
+        this.adminApi.getBrands().subscribe({
+          next: (brands) => {
+            const totalBrands = Array.isArray(brands) ? brands.length : 0;
+            this.stats[1].value = String(totalBrands);
+
+            const lastBrand = totalBrands > 0 ? brands[brands.length - 1] : null;
+            this.overview.brandName = lastBrand?.name ?? '-';
+
+            //Pending suggestions
+            this.adminApi.getPendingSuggestions().subscribe({
+              next: (pending) => {
+                const totalPending = Array.isArray(pending) ? pending.length : 0;
+                this.stats[2].value = String(totalPending);
+                this.overview.pendingSuggestions = totalPending;
+
+                this.loadingKpis = false;
+              },
+              error: () => {
+                this.error = 'Pending suggestions konnten nicht geladen werden.';
+                this.loadingKpis = false;
+              }
+            });
+          },
+          error: () => {
+            this.error = 'Brands konnten nicht geladen werden.';
+            this.loadingKpis = false;
+          }
+        });
+
+      },
+      error: () => {
+        this.error = 'Cars konnten nicht geladen werden.';
+        this.loadingKpis = false;
+      }
+    });
+  }
+
+  loadAnalytics() {
+    this.adminApi.getMostLikedCategory().subscribe({
+      next: (res: any) => {
+        const cat = res?.category ?? '-';
+        const likes = Number(res?.likes ?? 0);
+        this.topCategoryText = `${cat} (${likes} Likes)`;
+      },
+      error: () => {
+        this.topCategoryText = '-';
+      }
+    });
+
+    this.adminApi.getMostLikedCar().subscribe({
+      next: (res: any) => {
+        const likes = Number(res?.likes ?? 0);
+        const car = res?.car;
+
+        if (!car) {
+          this.mostLikedCarText = '-';
+          return;
+        }
+
+        this.mostLikedCarText = `${car.brandName} ${car.model} (${likes} Likes)`;
+      },
+      error: () => {
+        this.mostLikedCarText = '-';
+      }
+    });
+  }
 
   @HostListener('window:scroll')
   onScroll() {

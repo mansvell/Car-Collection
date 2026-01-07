@@ -22,10 +22,6 @@ public class CarService {
     return carRepo.findAll();
   }
 
-  /*public List<Car> getCarsByBrand(Long brandId) {
-    Brand brand = brandRepo.findById(brandId).orElseThrow();
-    return carRepo.findByBrand(brand);
-  }*/
   public List<Car> getCarsByBrand(Brand brand) {
     return carRepo.findByBrand(brand);
   }
