@@ -27,6 +27,10 @@ public class SuggestionService {
   public List<Suggestion> getPending() { //ADMIN: récupérer toutes les suggestions "PENDING"
     return repo.findByStatus("PENDING");
   }
+  public List<Suggestion> getPendingUser() {
+    return repo.findByStatusWithUser("PENDING");
+  }
+
 
   public Suggestion savee(Suggestion s) {
     return repo.save(s);

@@ -163,7 +163,7 @@ import {AdminService} from '../../../api/admin.service';
                       Vorschlag #{{ i + 1 }}
                     </div>
                     <div class="mt-2 text-xl font-extrabold text-slate-900">
-                      {{ s.brand }} <span class="text-red-500">•</span> {{ s.model }}
+                      von : {{ s.userVorName }} {{ s.userNachname}}<span class="text-red-500">•</span> {{ s.userEmail}}
                     </div>
                   </div>
 

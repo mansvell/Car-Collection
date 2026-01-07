@@ -14,4 +14,8 @@ public class SuggestionDTO {
   private Integer hp;
   private String description;
   private String status;
+
+  private String userVorname;
+  private String userNachname;
+  private String userEmail;
 }

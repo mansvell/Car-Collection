@@ -50,6 +50,14 @@ public class EntityMapper {
     SuggestionDTO dto = new SuggestionDTO();
     dto.setSid(s.getSid());
     dto.setUserId(s.getUser() != null ? s.getUser().getId() : null);
+
+    //infos du user sur les Vorschläge
+    if (s.getUser() != null) {
+      dto.setUserVorname(s.getUser().getVorname());
+      dto.setUserNachname(s.getUser().getNachname());
+      dto.setUserEmail(s.getUser().getEmail());
+    }
+
     dto.setLogo(s.getLogo());
     dto.setModel(s.getModel());
     dto.setBrand(s.getBrand());
