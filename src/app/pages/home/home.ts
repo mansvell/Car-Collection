@@ -21,7 +21,7 @@ type Brand = {
   selector: 'app-home',
   imports: [NgForOf, NgIf],
   template: `
-    <div class="relative overflow-hidden ">
+    <div class="min-h-screen relative overflow-hidden ">
 
       <section class="relative pt-6 pb-10 px-4 sm:px-6 lg:px-6 max-w-7xl mx-auto">
         <div class="text-center mt-2 mb-15">
@@ -44,7 +44,7 @@ type Brand = {
         <!-- Loading state -->
         <div *ngIf="loading"
              class="mt-9 rounded-2xl bg-white/60 backdrop-blur ring-1 ring-slate-200/70 p-6 text-center shadow-sm">
-          <div class="text-sm font-bold text-slate-700">Lade Brands...</div>
+          <div class="text-sm font-bold text-slate-700">Lade Brands... Bewegen Sie bitte mal kurz den Bildschirm</div>
         </div>
 
         <div *ngIf="!loading && brands.length > 0"
@@ -66,6 +66,7 @@ type Brand = {
             </span>
           </div>
         </div>
+
 
       </section>
 

@@ -40,7 +40,7 @@ import { NgIf } from '@angular/common';
               <div class="space-y-2">
                 <label class="text-slate-700 font-extrabold block">Vorname</label>
                 <input [(ngModel)]="form.vorname" name="vorname" required
-                       placeholder="Mec"
+                       placeholder="vorname"
                        class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                               placeholder:text-slate-400 shadow-sm transition
                               focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:ring-offset-2 focus:ring-offset-white" />
@@ -49,7 +49,7 @@ import { NgIf } from '@angular/common';
               <div class="space-y-2">
                 <label class="text-slate-700 font-extrabold block">Nachname</label>
                 <input [(ngModel)]="form.nachname" name="nachname" required
-                       placeholder="Bien"
+                       placeholder="nachname"
                        class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                               placeholder:text-slate-400 shadow-sm transition
                               focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:ring-offset-2 focus:ring-offset-white" />
@@ -59,7 +59,7 @@ import { NgIf } from '@angular/common';
             <div class="space-y-2">
               <label class="text-slate-700 font-extrabold block">Email</label>
               <input [(ngModel)]="form.email" name="email" type="email" required
-                     placeholder="example@gmail.com"
+                     placeholder="beispiel@gmail.com"
                      class="w-full rounded-2xl bg-white/60 ring-1 ring-slate-200/70 px-4 py-3 text-slate-800
                             placeholder:text-slate-400 shadow-sm transition
                             focus:outline-none focus:ring-2 focus:ring-sky-400/60 focus:ring-offset-2 focus:ring-offset-white" />
