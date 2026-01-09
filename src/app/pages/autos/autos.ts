@@ -40,7 +40,7 @@ type Car = {
 
         <!--loading/empty-->
         <div *ngIf="loading" class="rounded-2xl bg-white/60 ring-1 ring-slate-200/70 backdrop-blur p-6 shadow-sm">
-          <div class="font-bold text-slate-800">load...</div>
+          <div class="font-bold text-slate-800">Hinweis: Doppelklicken Sie auf die Navigation ,um Autos anzuzeigen ,denn das Laden von Autos nimmt viel Zeit...</div>
         </div>
 
         <!--Wenn es kein Autos gibt -->
