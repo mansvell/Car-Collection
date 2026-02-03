@@ -1,0 +1,13 @@
+# Maven / Java
+target/
+
+# IDE
+.idea/
+*.iml
+
+# Ancienne base locale (sauvegarde)
+src/main/resources/data.sqlite
+src/main/resources/data.sqbpro
+
+# Fichier sqlite racine accidentel
+data.sqlite
