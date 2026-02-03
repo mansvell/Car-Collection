@@ -76,7 +76,7 @@ type Brand = {
         <div class="absolute inset-0 bg-slate-900/35 backdrop-blur-md" (click)="closeStory()"></div>
 
         <div class="relative w-full max-w-2xl rounded-3xl bg-white/75 backdrop-blur-xl
-                    ring-1 ring-slate-200/70 shadow-2xl animate-storyOpen">
+                    ring-1 ring-slate-200/70 shadow-2xl max-h-[92vh] sm:max-h-[88vh] flex flex-col animate-storyOpen ">
 
           <div class="flex items-center justify-between p-5 sm:p-6 border-b border-slate-200/60">
             <div class="flex items-center gap-4">
@@ -101,7 +101,7 @@ type Brand = {
           </div>
 
           <!-- content -->
-          <div class="p-5 sm:p-6">
+          <div class="p-5 sm:p-6 flex-1 overflow-y-auto">
             <div class="grid grid-cols-2 sm:grid-cols-2 gap-3 text-sm">
               <div class="rounded-2xl bg-white/55 ring-1 ring-slate-200/70 p-4">
                 <div class="text-xs font-bold text-slate-500">erstellt in </div>
