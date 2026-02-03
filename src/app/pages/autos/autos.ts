@@ -62,11 +62,6 @@ type Car = {
                 </div>
               </div>
 
-
-              <div class="hidden sm:flex items-center gap-2 text-xs text-slate-500">
-                <span class="h-1.5 w-1.5 rounded-full bg-sky-500/80"></span>
-                horizontal scroll möglich ->
-              </div>
             </div>
 
             <!-- horizontal scroller -->
@@ -134,11 +129,12 @@ type Car = {
              (click)="closeCar()"></div> <!--Hintergrund wenn man irgendwo klickt -->
 
         <div class="relative w-full max-w-5xl rounded-3xl bg-white/80 backdrop-blur-xl
-              ring-1 ring-white/40 shadow-2xl overflow-hidden animate-modalOpenPro">
+            ring-1 ring-white/40 shadow-2xl overflow-hidden animate-modalOpenPro
+            max-h-[92vh] sm:max-h-[88vh] flex flex-col">
 
           <div class="relative bg-slate-100/60">
             <img [src]="selectedCar.logo" [alt]="selectedCar.model"
-                 class="w-full h-[240px] sm:h-[320px] md:h-[400px] object-cover image-glow" />
+                 class="w-full h-[200px] xs:h-[220px] sm:h-[320px] md:h-[400px] object-cover image-glow" />
 
             <div class="absolute top-4 right-4 flex items-center gap-2">
               <!-- favorite -->
@@ -162,7 +158,7 @@ type Car = {
           </div>
 
           <!-- details -->
-          <div class="p-5 sm:p-6">
+          <div class="p-5 sm:p-6 flex-1 overflow-y-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
               <div class="md:col-span-2 rounded-2xl bg-white/55 ring-1 ring-slate-200/70 p-5">
                 <div class="text-xs font-bold tracking-widest text-slate-500 uppercase">Beschreibung</div>
@@ -177,7 +173,7 @@ type Car = {
                 <div class="mt-3 space-y-3 text-sm">
                   <div class="flex items-center justify-between">
                     <span class="text-slate-500 font-semibold">Name</span>
-                    <span class="text-slate-900 font-extrabold">{{ selectedCar.model }}</span>
+                    <span class="text-slate-900 font-extrabold max-w-[55%] ">{{ selectedCar.model }}</span>
                   </div>
                   <div class="h-px bg-slate-200/70"></div>
                   <div class="flex items-center justify-between">
